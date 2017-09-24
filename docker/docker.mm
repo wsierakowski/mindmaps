@@ -53,9 +53,15 @@
 <font ITALIC="true" NAME="SansSerif" SIZE="12"/>
 </node>
 </node>
+<node CREATED="1506250913897" ID="ID_847885419" MODIFIED="1506250930589" TEXT="RUN/CMD/ENTRYPOINT">
 <node CREATED="1506022957864" ID="ID_109542568" MODIFIED="1506022977421" TEXT="RUN">
 <node CREATED="1506022980009" ID="ID_1418814829" MODIFIED="1506174866429" TEXT="The RUN instruction executes commands on the current image.">
 <node CREATED="1506174926128" ID="ID_531678317" MODIFIED="1506174936847" TEXT="Each of these instructions will create a new layer and, if successful, will commit that layer and then execute the next instruction."/>
+<node CREATED="1506251336713" ID="ID_1573742033" MODIFIED="1506251360587" TEXT="A good illustration of RUN instruction would be to install multiple version control systems packages:&#xa;&#xa;RUN apt-get update &amp;&amp; apt-get install -y bzr cvs git mercurial subversion">
+<node CREATED="1506251363296" ID="ID_512195354" MODIFIED="1506251379127" TEXT="Note that apt-get update and apt-get install are executed in a single RUN instruction. This is done to make sure that the latest packages will be installed. If apt-get install were in a separate RUN instruction, then it would reuse a layer added by apt-get update, which could had been created a long time ago.">
+<node CREATED="1506251384385" ID="ID_89543923" MODIFIED="1506251389637" TEXT="?? validate that"/>
+</node>
+</node>
 </node>
 <node CREATED="1506023116857" ID="ID_1500661938" MODIFIED="1506174889146" TEXT="RUN echo &quot;My first Docker image&quot;">
 <font ITALIC="true" NAME="SansSerif" SIZE="12"/>
@@ -70,10 +76,128 @@
 <node CREATED="1506175052616" ID="ID_644931147" MODIFIED="1506175054910" TEXT="We use this format to specify an array containing the command to be executed and then each parameter to pass to the command."/>
 </node>
 </node>
-<node CREATED="1506175076928" ID="ID_1998624849" MODIFIED="1506175080432" TEXT="EXPOSE">
+<node CREATED="1506248597121" ID="ID_95817815" MODIFIED="1506250942498" TEXT="CMD">
+<node CREATED="1506248872998" ID="ID_256793556" MODIFIED="1506248945940" TEXT="The CMD instruction specifies the command to run when a container is launched. It is similar to the RUN instruction, but rather than running the command when the container is being built, it will specify the command to run when the container is launched.">
+<node CREATED="1506249054684" ID="ID_1828371264" MODIFIED="1506249056203" TEXT="It&#x2019;s important to understand that we can override the CMD instruction using the docker run command. If we specify a CMD in our Dockerfile and one on the docker run command line, then the command line will override the Dockerfile&#x2019;s CMD instruction."/>
+</node>
+<node CREATED="1506248961536" ID="ID_815971274" MODIFIED="1506248979259" TEXT="CMD [&quot;bin/true&quot;]">
+<node CREATED="1506248980234" ID="ID_854233702" MODIFIED="1506248988459" TEXT="is equivalent to">
+<node CREATED="1506248989425" ID="ID_1657168500" MODIFIED="1506249009627" TEXT="docker run -it jamtur01/static_web /bin/true"/>
+</node>
+</node>
+<node CREATED="1506249018539" ID="ID_38192418" MODIFIED="1506249033412" TEXT="CMD [&quot;bin/bach&quot;, &quot;-l&quot;]">
+<node CREATED="1506249085348" ID="ID_413291358" MODIFIED="1506249104583" TEXT="Then if we build docker without passing the command at the end of the line, then we still will get the console.">
+<node CREATED="1506249125757" ID="ID_1472245655" MODIFIED="1506249145998" TEXT="But if we passed docker run -i -t jamtur01/test /bin/ps then we would get ps executed instead of getting bash."/>
+</node>
+</node>
+</node>
+<node CREATED="1506248611443" ID="ID_967013289" MODIFIED="1506248617027" TEXT="ENTRYPOINT">
+<node CREATED="1506249203193" ID="ID_1219758968" MODIFIED="1506249216782" TEXT="Similar to CMD except that it can&apos;t be overriden"/>
+<node CREATED="1506249495799" ID="ID_807915045" MODIFIED="1506249499776" TEXT="ENTRYPOINT [&quot;/usr/sbin/nginx&quot;]">
+<node CREATED="1506249516040" ID="ID_1714305542" MODIFIED="1506249518890" TEXT="Execution: $ docker run -t -i jamtur01/static_web -g &quot;daemon off;&quot;">
+<node CREATED="1506249535694" ID="ID_697048727" MODIFIED="1506249561313" TEXT="will pass the params to the command in Dockerfile">
+<node CREATED="1506249555534" ID="ID_1100015443" MODIFIED="1506249557167" TEXT="/usr/sbin/nginx -g &quot;daemon off;&quot;"/>
+</node>
+</node>
+</node>
+<node CREATED="1506249589031" ID="ID_1273627728" MODIFIED="1506249598205" TEXT="When we use ENTRYPOINT and CMD together, we can achieve the default arguments if no arguments is provided to the docker run:">
+<node CREATED="1506249615182" ID="ID_1376955293" MODIFIED="1506249639434" TEXT="ENTRYPOINT [&quot;/usr/sbin/nginx&quot;] &#xa;CMD [&quot;-h&quot;]"/>
+</node>
+</node>
+<node CREATED="1506250946237" ID="ID_1756095679" MODIFIED="1506250966939" TEXT="They can be specified in shell form or exec form">
+<node CREATED="1506250975651" ID="ID_845577225" MODIFIED="1506251026912" TEXT="Shell form">
+<node CREATED="1506250995975" ID="ID_1704576922" MODIFIED="1506250997938" TEXT="&lt;instruction&gt; &lt;command&gt;"/>
+<node CREATED="1506251008047" ID="ID_1447235279" MODIFIED="1506251017232" TEXT="RUN apt-get install python3  &#xa;CMD echo &quot;Hello world&quot;  &#xa;ENTRYPOINT echo &quot;Hello world&quot; "/>
+<node CREATED="1506251027408" ID="ID_420618538" MODIFIED="1506251029074" TEXT="When instruction is executed in shell form it calls /bin/sh -c &lt;command&gt; under the hood and normal shell processing happens. ">
+<node CREATED="1506251044080" ID="ID_811179325" MODIFIED="1506251079614" TEXT="For example, the following snippet in Dockerfile:&#xa;&#xa;ENV name John Dow  &#xa;ENTRYPOINT echo &quot;Hello, $name&quot;  &#xa;&#xa;when container runs as docker run -it &lt;image&gt; will produce output&#xa;&#xa;Hello, John Dow  &#xa;&#xa;Note that variable name is replaced with its value."/>
+</node>
+</node>
+<node CREATED="1506250979652" ID="ID_1594949464" MODIFIED="1506250984027" TEXT="Exec form">
+<node CREATED="1506251100091" ID="ID_1551019767" MODIFIED="1506251101717" TEXT="&lt;instruction&gt; [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;, ...]"/>
+<node CREATED="1506251107738" ID="ID_964022807" MODIFIED="1506251121600" TEXT="RUN [&quot;apt-get&quot;, &quot;install&quot;, &quot;python3&quot;]  &#xa;CMD [&quot;/bin/echo&quot;, &quot;Hello world&quot;]  &#xa;ENTRYPOINT [&quot;/bin/echo&quot;, &quot;Hello world&quot;]  "/>
+<node CREATED="1506251129906" ID="ID_1668885420" MODIFIED="1506251133897" TEXT="Preferred form for CMD and ENTRYPOINT instructions."/>
+<node CREATED="1506251145235" ID="ID_1009868889" MODIFIED="1506251147026" TEXT="When instruction is executed in exec form it calls executable directly, and shell processing does not happen. ">
+<node CREATED="1506251167304" ID="ID_1772051379" MODIFIED="1506251176309" TEXT="For example, the following snippet in Dockerfile&#xa;&#xa;ENV name John Dow  &#xa;ENTRYPOINT [&quot;/bin/echo&quot;, &quot;Hello, $name&quot;]  &#xa;&#xa;when container runs as docker run -it &lt;image&gt; will produce output&#xa;&#xa;Hello, $name  &#xa;&#xa;Note that variable name is not substituted."/>
+<node CREATED="1506251217427" ID="ID_1060342557" MODIFIED="1506251226440" TEXT="If you need to run bash (or any other interpreter but sh), use exec form with /bin/bash as executable. In this case, normal shell processing will take place. &#xa;&#xa;For example, the following snippet in Dockerfile&#xa;&#xa;ENV name John Dow  &#xa;ENTRYPOINT [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;echo Hello, $name&quot;]  &#xa;&#xa;when container runs as docker run -it &lt;image&gt; will produce output&#xa;&#xa;Hello, John Dow  "/>
+</node>
+</node>
+</node>
+<node CREATED="1506251271536" ID="ID_1480853688" MODIFIED="1506251281532" TEXT="- RUN is an image build step, the state of the container after a RUN command will be committed to the docker image. A Dockerfile can have many RUN steps that layer on top of one another to build the image.&#xa;&#xa;- CMD is the command the container executes by default when you launch the built image. A Dockerfile can only have one CMD. The CMD can be overridden when starting a container with docker run $image $other_command.&#xa;&#xa;- ENTRYPOINT is also closely related to CMD and can modify the way a container starts the image."/>
+</node>
+<node CREATED="1506175076928" ID="ID_1998624849" MODIFIED="1506250893649" TEXT="EXPOSE">
 <node CREATED="1506175096793" ID="ID_1798942461" MODIFIED="1506175100020" TEXT="Tells Docker that the application in this container will use this specific port on the container. That doesn&#x2019;t mean you can automatically access whatever service is running on that port (here, port 80) on the container. For security reasons, Docker doesn&#x2019;t open the port automatically, but waits for you to do it when you run the container using the docker run command."/>
 <node CREATED="1506175100897" ID="ID_138794388" MODIFIED="1506175106057" TEXT="EXPOSE 80">
 <font ITALIC="true" NAME="SansSerif" SIZE="12"/>
+</node>
+</node>
+<node CREATED="1506248618269" ID="ID_1673489145" MODIFIED="1506248623771" TEXT="WORKDIR">
+<node CREATED="1506249704682" ID="ID_1562502711" MODIFIED="1506249737356" TEXT="Provides a way to set the working directory for the container and the ENTRYPOINT and/or CMD to will be executed there when a container is launched from the image"/>
+<node CREATED="1506249773891" ID="ID_661607444" MODIFIED="1506249792207">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <div>
+      <font size="2" color="#fc001b">WORKDIR /opt/webapp/db</font>
+    </div>
+    <div>
+      <font size="2" color="#fc001b">RUN bundle install</font>
+    </div>
+    <div>
+      <font size="2" color="#fc001b">WORKDIR /opt/webapp</font>
+    </div>
+    <div>
+      <font size="2" color="#fc001b">ENTRYPOINT [ &quot;rackup&quot; ]</font>
+    </div>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1506249831631" ID="ID_873502935" MODIFIED="1506249834133" TEXT="You can override the working directory at runtime with the -w flag, for example: $ docker run -ti -w /var/log ubuntu pwd /var/log"/>
+</node>
+<node CREATED="1506248624436" ID="ID_152986221" MODIFIED="1506248627101" TEXT="ENV">
+<node CREATED="1506250223007" ID="ID_1858837130" MODIFIED="1506250232935" TEXT="Sets environment variables during the image build process"/>
+<node CREATED="1506250251420" ID="ID_1110863750" MODIFIED="1506250253361" TEXT="ENV RVM_PATH /home/rvm/">
+<node CREATED="1506250257860" ID="ID_68198542" MODIFIED="1506250277825" TEXT="If have this instruction in Dockerfile: RUN gem install unicorn">
+<node CREATED="1506250277826" ID="ID_657647934" MODIFIED="1506250287914" TEXT="It will be executed as this">
+<node CREATED="1506250292933" ID="ID_1265645092" MODIFIED="1506250294508" TEXT="RVM_PATH=/home/rvm/ gem install unicorn"/>
+</node>
+</node>
+</node>
+<node CREATED="1506250311999" ID="ID_577715773" MODIFIED="1506250313758" TEXT="ENV RVM_PATH=/home/rvm RVM_ARCHFLAGS=&quot;-arch i386&quot;">
+<node CREATED="1506250313759" ID="ID_635682876" MODIFIED="1506250322297" TEXT="Multiple variables specified"/>
+</node>
+<node CREATED="1506250342799" ID="ID_1159328638" MODIFIED="1506250356452" TEXT="ENV TARGET_DIR /opt/app &#xa;WORKDIR $TARGET_DIR">
+<node CREATED="1506250367513" ID="ID_305820425" MODIFIED="1506250388208" TEXT="Here we&#x2019;ve specified a new environment variable, TARGET_DIR, and then used its value in a WORKDIR instruction. Our WORKDIR instruction would now be set to /opt/app."/>
+</node>
+</node>
+<node CREATED="1506248628925" ID="ID_1640913790" MODIFIED="1506248631439" TEXT="USER">
+<node CREATED="1506250544368" ID="ID_768793145" MODIFIED="1506250560401" TEXT="Specifies a user that the image should be run as.">
+<node CREATED="1506250574467" ID="ID_663678569" MODIFIED="1506250580074" TEXT="The default user if you don&#x2019;t specify the USER instruction is root.">
+<node CREATED="1506250617738" ID="ID_519402290" MODIFIED="1506250635214" TEXT="Can be overridden by docker run -u USER"/>
+</node>
+<node CREATED="1506250741005" ID="ID_221833514" MODIFIED="1506250750889" TEXT="When ADD&#x2019;ing files Docker uses the ending character of the destination to determine what the source is. If the destination ends in a /, then it considers the source a directory. If it doesn&#x2019;t end in a /, it considers the source a file."/>
+</node>
+<node CREATED="1506250587431" ID="ID_1996055212" MODIFIED="1506250589258" TEXT="USER user"/>
+<node CREATED="1506250592968" ID="ID_1137369724" MODIFIED="1506250595619" TEXT="USER user:group"/>
+<node CREATED="1506250599016" ID="ID_1024485464" MODIFIED="1506250603750" TEXT="USER uid"/>
+<node CREATED="1506250607561" ID="ID_1523534832" MODIFIED="1506250614469" TEXT="USER uid:gid"/>
+</node>
+<node CREATED="1506248631819" ID="ID_1100614807" MODIFIED="1506248636249" TEXT="ADD">
+<node CREATED="1506250677834" ID="ID_1094666324" MODIFIED="1506250689185" TEXT="Adds files and directories from our build environment into our image">
+<node CREATED="1506250723714" ID="ID_744713333" MODIFIED="1506250724980" TEXT="The source of the file can be a URL, filename, or directory as long as it is inside the build context or environment. You cannot ADD files from outside the build directory or context."/>
+</node>
+<node CREATED="1506250693841" ID="ID_780475267" MODIFIED="1506250695893" TEXT="ADD software.lic /opt/application/software.lic">
+<node CREATED="1506250705812" ID="ID_1164450577" MODIFIED="1506250718794" TEXT="This will copy the file software.lic from the build directory to /opt/application/software.lic in the image."/>
+</node>
+</node>
+<node CREATED="1506248637213" ID="ID_625217071" MODIFIED="1506250796353" TEXT="COPY">
+<node CREATED="1506250780503" ID="ID_619320911" MODIFIED="1506250784800" TEXT="Closely related to the ADD instruction. The key difference is that the COPY instruction is purely focused on copying local files from the build context and does not have any extraction or decompression capabilities.">
+<node CREATED="1506250822881" ID="ID_61335322" MODIFIED="1506250824699" TEXT="If the destination doesn&#x2019;t exist, it is created along with all missing directories in its path, much like how the mkdir -p command works."/>
+</node>
+<node CREATED="1506250796354" ID="ID_365563079" MODIFIED="1506250798506" TEXT="COPY conf.d/ /etc/apache2/">
+<node CREATED="1506250805049" ID="ID_1521443923" MODIFIED="1506250814098" TEXT="This will copy files from the conf.d directory to the /etc/apache2/ directory."/>
 </node>
 </node>
 </node>
@@ -107,8 +231,7 @@
       <font color="#fc001b" size="2">EXPOSE 80</font>
     </div>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -136,6 +259,35 @@
 </node>
 <node CREATED="1506028224193" ID="ID_1766015088" MODIFIED="1506028289370" TEXT="-t name:version">
 <node CREATED="1506028228188" ID="ID_1238311952" MODIFIED="1506028260915" TEXT="As above but also adds a tag, if tag is omitted as above, it will be tagged as :latest"/>
+</node>
+<node CREATED="1506244884510" ID="ID_552454623" MODIFIED="1506244893024" TEXT="--no-cache">
+<node CREATED="1506244893025" ID="ID_397684570" MODIFIED="1506245173364" TEXT="As a result of each step being committed as an image, Docker treats previous layers as a cache. If we did not need to change anything in Steps 1 to 3, then Docker would use the previously built images as a cache and a starting point (from Step 4 where we did some change).&#xa;Sometimes, though, you want to make sure you don&#x2019;t use the cache. For example, if you&#x2019;d cached Step 3: apt-get update, then it wouldn&#x2019;t refresh the APT package cache, while we may want to do this to get a new version of a package.">
+<node CREATED="1506245569642" ID="ID_1582159379" MODIFIED="1506245596472" TEXT="Trick to use build cache for templating:">
+<node CREATED="1506245602420" ID="ID_1934693513" MODIFIED="1506245639424">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <div>
+      <font size="2" color="#fc001b">FROM ubuntu:14.04</font>
+    </div>
+    <div>
+      <font size="2" color="#fc001b">MAINTAINER James Turnbull &quot;james@example.com&quot;</font>
+    </div>
+    <div>
+      <font size="2" color="#fc001b">ENV REFRESHED_AT 2014-07-01</font>
+    </div>
+    <div>
+      <font size="2" color="#fc001b">RUN apt-get -qq update</font>
+    </div>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1506245644322" ID="ID_1425842300" MODIFIED="1506245690487" TEXT="With my template, when I want to refresh the build, I change the date in my ENV instruction. Docker then resets the cache when it hits that ENV instruction and runs every subsequent instruction anew without relying on the cache. This means my RUN apt-get update instruction is rerun and my package cache is refreshed with the latest content."/>
+</node>
+</node>
 </node>
 </node>
 <node CREATED="1506175270927" ID="ID_1200177924" MODIFIED="1506175282537" TEXT="--&gt; example &lt;--">
@@ -365,6 +517,38 @@
 <node CREATED="1506170934935" ID="ID_937538062" MODIFIED="1506170941378" TEXT="--restart=always"/>
 <node CREATED="1506170943232" ID="ID_509100178" MODIFIED="1506170959602" TEXT="--restart=on-failure:5"/>
 </node>
+<node CREATED="1506246000183" ID="ID_1303826247" MODIFIED="1506246773103" TEXT="-p">
+<node CREATED="1506246004152" ID="ID_492450660" MODIFIED="1506246183129" TEXT="Which network port to publish at runtime">
+<node CREATED="1506247018654" ID="ID_1644310150" MODIFIED="1506247042204" TEXT="When we run a container, there are two methods of assigning ports on the Docker host">
+<node CREATED="1506247044704" ID="ID_957001778" MODIFIED="1506247187655" TEXT="Docker can randomly assign a hight port from the range of 32768 to 61000 on the host that maps to port 80 on the container: -p 80"/>
+<node CREATED="1506247191701" ID="ID_1055683591" MODIFIED="1506247222522" TEXT="We can specify a specific port on the Docker host that would map to port 80 on the container"/>
+</node>
+</node>
+<node CREATED="1506246190285" ID="ID_1376879755" MODIFIED="1506246194242" TEXT="-p 80">
+<node CREATED="1506247227063" ID="ID_437712395" MODIFIED="1506247254403" TEXT="Assign port from range 32768-61000 to port 80 on the container">
+<node CREATED="1506248470053" ID="ID_1437116919" MODIFIED="1506248481064" TEXT="We can check which port has been assigned in three ways">
+<node CREATED="1506248481693" ID="ID_420455361" MODIFIED="1506248491783" TEXT="docker ps -l"/>
+<node CREATED="1506248517383" ID="ID_1318283958" MODIFIED="1506248532218" TEXT="docker port &lt;container name or id&gt;"/>
+<node CREATED="1506248544563" ID="ID_814172579" MODIFIED="1506248563318" TEXT="docker inspect"/>
+</node>
+</node>
+</node>
+<node CREATED="1506246736689" ID="ID_3115499" MODIFIED="1506246745606" TEXT="-p 8080:80">
+<node CREATED="1506247256406" ID="ID_425412381" MODIFIED="1506247270151" TEXT="Assign port 8080 on the host to port 80 on the container">
+<node CREATED="1506248368728" ID="ID_1185640562" MODIFIED="1506248392686" TEXT="We need to remember that only one container on the same host can be assigned to the same port, 8080 in this case."/>
+</node>
+</node>
+<node CREATED="1506246746239" ID="ID_926240124" MODIFIED="1506246770994" TEXT="-p 127.0.0.1:8080:80">
+<node CREATED="1506248398853" ID="ID_132356794" MODIFIED="1506248419493" TEXT="Bind to a specific interface"/>
+</node>
+<node CREATED="1506246773625" ID="ID_159718243" MODIFIED="1506246785740" TEXT="-p 127.0.0.1::80">
+<node CREATED="1506248420140" ID="ID_1793298195" MODIFIED="1506248434604" TEXT="Bind to a specific interface on a random port"/>
+</node>
+</node>
+<node CREATED="1506250464121" ID="ID_1363991540" MODIFIED="1506250468556" TEXT="-e">
+<node CREATED="1506250468557" ID="ID_928305754" MODIFIED="1506250498572" TEXT="Environment variable that will be applied at runtime (as opposed to ENV from Dockerfile applied and build time)"/>
+<node CREATED="1506250525364" ID="ID_55130774" MODIFIED="1506250526713" TEXT="docker run -ti -e &quot;WEB_PORT=8080&quot; ubuntu"/>
+</node>
 </node>
 <node CREATED="1506157008766" ID="ID_1740458268" MODIFIED="1506160248003" TEXT="--&gt; Examples &lt;--">
 <node CREATED="1506157072955" ID="ID_1061721106" MODIFIED="1506166853670" TEXT="docker run -it ubuntu /bin/bash">
@@ -411,8 +595,7 @@
       <font size="2">root@fcd78e1a3569:/# </font>
     </div>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1506166949828" ID="ID_487853348" MODIFIED="1506166957362" TEXT="1. Firstly, Docker checked locally for the ubuntu image. "/>
 <node CREATED="1506166957869" ID="ID_475419512" MODIFIED="1506166964758" TEXT="2. If it can&#x2019;t find the image on our local Docker host, it will reach out to the Docker Hub registry run by Docker, Inc., and look for it there."/>
 <node CREATED="1506166965804" ID="ID_49907111" MODIFIED="1506166972251" TEXT="3. Once Docker had found the image, it downloaded the image and stored it on the local host."/>
@@ -474,8 +657,7 @@
       <font size="2">apt install iputils-ping</font>&#160;&#160;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -638,8 +820,7 @@
       <font size="2">Server Version: 17.06.1-ce </font>
     </div>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -735,13 +916,60 @@
       </div>
     </div>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
 <node CREATED="1506175593707" ID="ID_1433471355" MODIFIED="1506175615468" TEXT="docker history &lt;image id&gt;">
 <font BOLD="true" ITALIC="true" NAME="SansSerif" SIZE="12"/>
+<node CREATED="1506176365627" ID="ID_306359777" MODIFIED="1506245762725" TEXT="Drill down into how the image was created. We can see each of the image layers inside an image and a Dockerfile instruction that created them."/>
+<node CREATED="1506176373947" ID="ID_802528162" MODIFIED="1506176376285" TEXT="Results">
+<node CREATED="1506176376286" ID="ID_1433563798" MODIFIED="1506176414968">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <div>
+      <font size="2">IMAGE CREATED CREATED BY </font>
+    </div>
+    <div>
+      <font size="2">SIZE </font>
+    </div>
+    <div>
+      <font size="2">22d47c8cb6e5 6 minutes ago /bin/sh -c #(nop) EXPOSE map[80/tcp </font>
+    </div>
+    <div>
+      <font size="2">:{}] 0 B </font>
+    </div>
+    <div>
+      <font size="2">b584f4ac1def 6 minutes ago /bin/sh -c echo 'Hi, I am in your </font>
+    </div>
+    <div>
+      <font size="2">container' 27 B </font>
+    </div>
+    <div>
+      <font size="2">93fb180f3bc9 6 minutes ago /bin/sh -c apt-get install -y nginx </font>
+    </div>
+    <div>
+      <font size="2">18.46 MB </font>
+    </div>
+    <div>
+      <font size="2">9d938b9e0090 6 minutes ago /bin/sh -c apt-get update </font>
+    </div>
+    <div>
+      <font size="2">20.02 MB </font>
+    </div>
+    <div>
+      <font size="2">4c66c9dcee35 6 minutes ago /bin/sh -c #(nop) MAINTAINER James </font>
+    </div>
+    <div>
+      <font size="2">Turnbull &quot; 0 B </font>
+    </div>
+  </body>
+</html></richcontent>
+</node>
+</node>
 </node>
 </node>
 </node>
