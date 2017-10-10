@@ -1,6 +1,6 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1506021564220" ID="ID_1406597644" MODIFIED="1506022320828" TEXT="Docker">
+<node CREATED="1506021564220" ID="ID_1406597644" MODIFIED="1507577772817" TEXT="Docker">
 <node CREATED="1506165081806" ID="ID_1218100919" MODIFIED="1506166135703" POSITION="right" TEXT="Core components">
 <node CREATED="1506165720012" ID="ID_1009912858" MODIFIED="1506165728243" TEXT="Docker client and server">
 <node CREATED="1506165803672" ID="ID_1634370321" MODIFIED="1506165805559" TEXT="The Docker client talks to the Docker server or daemon, which, in turn, does all the work."/>
@@ -9,7 +9,37 @@
 </node>
 <node CREATED="1506166029021" ID="ID_921370121" MODIFIED="1506166033055" TEXT="Images">
 <node CREATED="1506166033580" ID="ID_1392365292" MODIFIED="1506166052414" TEXT="Images are the &#x201d;build&#x201d; part of Docker&#x2019;s life cycle. They are a layered format, using Union file systems, that are built step-by-step using a series of instructions.">
-<node CREATED="1506171163583" ID="ID_1445592779" MODIFIED="1506171169881" TEXT="TODO: What is a docker image"/>
+<node CREATED="1506171163583" ID="ID_1445592779" MODIFIED="1507662983931" TEXT="Image is made up of filesystems layered over each other">
+<node CREATED="1507663236064" ID="ID_954913498" MODIFIED="1507663331157" TEXT="At the base is a boot filesystem, bootfs, which resembles the typical Linux/Unix boot filesystem. When a container has booted, it is moved into memory, and the boot filesystem is unmounted to free up the RAM used by the initrd disk image."/>
+<node CREATED="1507663352041" ID="ID_1224441516" MODIFIED="1507663354786" TEXT="Next layer is a root filesystem rootfs that can be one or more operating systems (Debian or Ubuntu filesystem).">
+<node CREATED="1507663420142" ID="ID_69386690" MODIFIED="1507663655067" TEXT="In a more traditional Linux boot, the root filesystem is mounted read-only and then switched to read-write after boot and an integrity check is conducted. In the Docker world, however, the root filesystem stays in read-only mode, and Docker takes advantage of a union mount to add more read-only filesystems onto the root filesystem.">
+<node CREATED="1507663458414" ID="ID_177307832" MODIFIED="1507663461099" TEXT="A union mount is a mount that allows several filesystems to be mounted at one time but appear to be one filesystem. The union mount overlays the filesystems on top of one another so that the resulting filesystem may contain files and subdirectories from any or all of the underlying filesystems."/>
+</node>
+</node>
+<node CREATED="1507663540320" ID="ID_41289831" MODIFIED="1507663627079">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <div>
+      Docker calls each of these filesystems&#160;<font color="#fc001b">images</font>.&#160;Images can be layered on top of&#160;one another. The image below is called the parent image and you can traverse&#160;each layer until you reach the bottom of the image stack where the final image&#160;is called the&#160;<font color="#fc001b">base image</font>.&#160;
+    </div>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1507663717601" ID="ID_793956543" MODIFIED="1507663719413" TEXT="Finally, when a container is launched from an image, Docker mounts a read-write filesystem on top of any layers below. This is where whatever processes we want our Docker container to run will execute.">
+<node CREATED="1507663786323" ID="ID_1971370487" MODIFIED="1507663788888" TEXT="When Docker first starts a container, the initial read-write layer is empty. As changes occur, they are applied to this layer; for example, if you want to change a file, then that file will be copied from the read-only layer below into the readwrite layer. The read-only version of the file will still exist but is now hidden underneath the copy. ">
+<node CREATED="1507663799067" ID="ID_862048044" MODIFIED="1507663805114" TEXT="A bit like Redux!"/>
+<node CREATED="1507664017404" ID="ID_91725382" MODIFIED="1507664019543" TEXT="This pattern is traditionally called &#x201d;copy on write&#x201d; and is one of the features that makes Docker so powerful. Each read-only image layer is read-only; this image never changes. When a container is created, Docker builds from the stack of images and then adds the read-write layer on top. That layer, combined with the knowledge of the image layers below it and some configuration data, form the container."/>
+</node>
+<node CREATED="1507664139428" ID="ID_22923438" MODIFIED="1507664141595" TEXT="When you create a new container, you add a new writable layer on top of the underlying layers. This layer is often called the &#x201c;container layer&#x201d;. All changes made to the running container, such as writing new files, modifying existing files, and deleting files, are written to this thin writable container layer.">
+<node CREATED="1507664245431" ID="ID_922111885" MODIFIED="1507664247729" TEXT="When the container is deleted, the writable layer is also deleted."/>
+<node CREATED="1507664276564" ID="ID_1747168" MODIFIED="1507664282232" TEXT="Because each container has its own writable container layer, and all changes are stored in this container layer, multiple containers can share access to the same underlying image and yet have their own data state."/>
+</node>
+</node>
+</node>
 <node CREATED="1506171940850" ID="ID_900748745" MODIFIED="1506172104329" TEXT="Location: local images live on our local Docker host in the /var/lib/docker directory, each image will be inside a dir named for a storage driver; i.e. aufs or devicemapper.">
 <node CREATED="1506172049403" ID="ID_1364579418" MODIFIED="1506172055113" TEXT="on Mac: $HOME/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2"/>
 </node>
@@ -151,8 +181,7 @@
       <font size="2" color="#fc001b">ENTRYPOINT [ &quot;rackup&quot; ]</font>
     </div>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1506249831631" ID="ID_873502935" MODIFIED="1506249834133" TEXT="You can override the working directory at runtime with the -w flag, for example: $ docker run -ti -w /var/log ubuntu pwd /var/log"/>
 </node>
@@ -177,7 +206,6 @@
 <node CREATED="1506250574467" ID="ID_663678569" MODIFIED="1506250580074" TEXT="The default user if you don&#x2019;t specify the USER instruction is root.">
 <node CREATED="1506250617738" ID="ID_519402290" MODIFIED="1506250635214" TEXT="Can be overridden by docker run -u USER"/>
 </node>
-<node CREATED="1506250741005" ID="ID_221833514" MODIFIED="1506250750889" TEXT="When ADD&#x2019;ing files Docker uses the ending character of the destination to determine what the source is. If the destination ends in a /, then it considers the source a directory. If it doesn&#x2019;t end in a /, it considers the source a file."/>
 </node>
 <node CREATED="1506250587431" ID="ID_1996055212" MODIFIED="1506250589258" TEXT="USER user"/>
 <node CREATED="1506250592968" ID="ID_1137369724" MODIFIED="1506250595619" TEXT="USER user:group"/>
@@ -191,6 +219,7 @@
 <node CREATED="1506250693841" ID="ID_780475267" MODIFIED="1506250695893" TEXT="ADD software.lic /opt/application/software.lic">
 <node CREATED="1506250705812" ID="ID_1164450577" MODIFIED="1506250718794" TEXT="This will copy the file software.lic from the build directory to /opt/application/software.lic in the image."/>
 </node>
+<node CREATED="1506250741005" ID="ID_221833514" MODIFIED="1507579635150" TEXT="When ADD&#x2019;ing files Docker uses the ending character of the destination to determine what the source is. If the destination ends in a /, then it considers the source a directory. If it doesn&#x2019;t end in a /, it considers the source a file."/>
 </node>
 <node CREATED="1506248637213" ID="ID_625217071" MODIFIED="1506250796353" TEXT="COPY">
 <node CREATED="1506250780503" ID="ID_619320911" MODIFIED="1506250784800" TEXT="Closely related to the ADD instruction. The key difference is that the COPY instruction is purely focused on copying local files from the build context and does not have any extraction or decompression capabilities.">
@@ -282,8 +311,7 @@
       <font size="2" color="#fc001b">RUN apt-get -qq update</font>
     </div>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1506245644322" ID="ID_1425842300" MODIFIED="1506245690487" TEXT="With my template, when I want to refresh the build, I change the date in my ENV instruction. Docker then resets the cache when it hits that ENV instruction and runs every subsequent instruction anew without relying on the cache. This means my RUN apt-get update instruction is rerun and my package cache is refreshed with the latest content."/>
 </node>
@@ -694,7 +722,9 @@
 </node>
 <node CREATED="1506168745864" ID="ID_563115791" MODIFIED="1506168761896" TEXT="docker attach &lt;container id or name&gt;">
 <font BOLD="true" ITALIC="true" NAME="SansSerif" SIZE="12"/>
-<node CREATED="1506168763709" ID="ID_599113973" MODIFIED="1506168779190" TEXT="Reattaches to interactive session on the container (if there is)"/>
+<node CREATED="1506168763709" ID="ID_599113973" MODIFIED="1506168779190" TEXT="Reattaches to interactive session on the container (if there is)">
+<node CREATED="1507583312418" ID="ID_1940700329" MODIFIED="1507583330815" TEXT="Container will restart with the same options we&#x2019;d specified when we launched it with the docker run command."/>
+</node>
 </node>
 <node CREATED="1506163905428" ID="ID_237992657" MODIFIED="1506170108363" TEXT="docker exec &lt;container id or name&gt; command">
 <font BOLD="true" ITALIC="true" NAME="SansSerif" SIZE="12"/>
