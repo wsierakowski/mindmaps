@@ -26,8 +26,7 @@
       Docker calls each of these filesystems&#160;<font color="#fc001b">images</font>.&#160;Images can be layered on top of&#160;one another. The image below is called the parent image and you can traverse&#160;each layer until you reach the bottom of the image stack where the final image&#160;is called the&#160;<font color="#fc001b">base image</font>.&#160;
     </div>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1507663717601" ID="ID_793956543" MODIFIED="1507663719413" TEXT="Finally, when a container is launched from an image, Docker mounts a read-write filesystem on top of any layers below. This is where whatever processes we want our Docker container to run will execute.">
 <node CREATED="1507663786323" ID="ID_1971370487" MODIFIED="1507663788888" TEXT="When Docker first starts a container, the initial read-write layer is empty. As changes occur, they are applied to this layer; for example, if you want to change a file, then that file will be copied from the read-only layer below into the readwrite layer. The read-only version of the file will still exist but is now hidden underneath the copy. ">
@@ -577,6 +576,25 @@
 <node CREATED="1506250468557" ID="ID_928305754" MODIFIED="1506250498572" TEXT="Environment variable that will be applied at runtime (as opposed to ENV from Dockerfile applied and build time)"/>
 <node CREATED="1506250525364" ID="ID_55130774" MODIFIED="1506250526713" TEXT="docker run -ti -e &quot;WEB_PORT=8080&quot; ubuntu"/>
 </node>
+<node CREATED="1507841573336" ID="ID_1277081305" MODIFIED="1507841835503" TEXT="-v &lt;host_dir&gt;:&lt;cont_dir&gt;">
+<node CREATED="1507841581826" ID="ID_1479231441" MODIFIED="1507841609363" TEXT="Create a volume in our container from a directory on the host">
+<node CREATED="1507841781415" ID="ID_1683740846" MODIFIED="1507841784218" TEXT="Volumes are specially designated directories within one or more containers that bypass the layered Union File System to provide persistent or shared data for Docker. This means that changes to a volume are made directly and bypass the image. They will not be included when we commit or build an image."/>
+<node CREATED="1507841854633" ID="ID_95051649" MODIFIED="1507841857062" TEXT="Volumes can also be shared between containers and can persist even when containers are stopped."/>
+<node CREATED="1507841882799" ID="ID_197592303" MODIFIED="1507841961667" TEXT="Value of volumes when we don&#x2019;t want to bake our application or code into an image">
+<node CREATED="1507841890846" ID="ID_547348989" MODIFIED="1507841974498" TEXT="It changes frequently, and we don&#x2019;t want to rebuild the image during our development process"/>
+<node CREATED="1507841914314" ID="ID_1356848660" MODIFIED="1507841940051" TEXT="We want to work on the app and test it simultaneously"/>
+<node CREATED="1507841985276" ID="ID_1319827308" MODIFIED="1507841987164" TEXT="We want to share the code between multiple containers"/>
+</node>
+</node>
+<node CREATED="1507841611222" ID="ID_53917763" MODIFIED="1507841622527" TEXT="docker run -d -p 80 --name website -v $PWD/website:/var/www/html/website jamtur01/nginx nginx">
+<node CREATED="1507841633530" ID="ID_417405698" MODIFIED="1507841701685" TEXT="directory_to_mount_on_the_local_host:directory_on_the_container"/>
+<node CREATED="1507841710946" ID="ID_673949820" MODIFIED="1507841777924" TEXT="If the directory in the container doesn&apos;t exist, it will be created by Docker."/>
+<node CREATED="1507842121930" ID="ID_627108362" MODIFIED="1507842124872" TEXT="-v $PWD/website:/var/www/html/website:ro">
+<node CREATED="1507842127272" ID="ID_1935557672" MODIFIED="1507842144552" TEXT=":ro makes the container directory read only"/>
+<node CREATED="1507842145039" ID="ID_89847567" MODIFIED="1507842167113" TEXT=":rw makes it writable"/>
+</node>
+</node>
+</node>
 </node>
 <node CREATED="1506157008766" ID="ID_1740458268" MODIFIED="1506160248003" TEXT="--&gt; Examples &lt;--">
 <node CREATED="1506157072955" ID="ID_1061721106" MODIFIED="1506166853670" TEXT="docker run -it ubuntu /bin/bash">
@@ -718,6 +736,12 @@
 <font BOLD="true" ITALIC="true" NAME="SansSerif" SIZE="12"/>
 </node>
 <node CREATED="1506168615292" ID="ID_10890372" MODIFIED="1506168656550" TEXT="docker stop &lt;container id or name&gt;">
+<font BOLD="true" ITALIC="true" NAME="SansSerif" SIZE="12"/>
+</node>
+<node CREATED="1507837704915" ID="ID_1649159138" MODIFIED="1507837730864" TEXT="docker restart &lt;container id or name&gt;">
+<font BOLD="true" ITALIC="true" NAME="SansSerif" SIZE="12"/>
+</node>
+<node CREATED="1507837746445" ID="ID_441518309" MODIFIED="1507837762152" TEXT="docker kill &lt;container id or name&gt;">
 <font BOLD="true" ITALIC="true" NAME="SansSerif" SIZE="12"/>
 </node>
 <node CREATED="1506168745864" ID="ID_563115791" MODIFIED="1506168761896" TEXT="docker attach &lt;container id or name&gt;">
