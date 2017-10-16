@@ -228,6 +228,16 @@
 <node CREATED="1506250805049" ID="ID_1521443923" MODIFIED="1506250814098" TEXT="This will copy files from the conf.d directory to the /etc/apache2/ directory."/>
 </node>
 </node>
+<node CREATED="1508146268801" ID="ID_1751854421" MODIFIED="1508146275184" TEXT="LABEL">
+<node CREATED="1508146275186" ID="ID_461535547" MODIFIED="1508149147528" TEXT="Use labels to organize your images, record licensing information, annotate relationships between containers, volumes, and networks, or in any way that makes sense for your business or application"/>
+<node CREATED="1508149462307" ID="ID_265073894" MODIFIED="1508149482734" TEXT="LABEL app=docker.br.hmheng.io/com-hmhco-uds/uds">
+<node CREATED="1508149525836" ID="ID_1424464502" MODIFIED="1508149529035" TEXT="Keys are alphanumeric strings which may contain periods (.) and hyphens (-).">
+<node CREATED="1508149569295" ID="ID_913271928" MODIFIED="1508149646215" TEXT="Docker users use images created by other organizations, duplication of labels across objects should be avoided."/>
+<node CREATED="1508149565571" ID="ID_895064633" MODIFIED="1508149567702" TEXT="Authors of third-party tools should prefix each label key with the reverse DNS notation of a domain they own, such as com.example.some-label."/>
+</node>
+<node CREATED="1508149858823" ID="ID_416207332" MODIFIED="1508149874566" TEXT="Label values can contain any data type that can be represented as a string, including (but not limited to) JSON, XML, CSV, or YAML"/>
+</node>
+</node>
 </node>
 <node CREATED="1506173817098" ID="ID_165682169" MODIFIED="1506173842163" TEXT="Dockerfile is created usually in the directory alongside an application code">
 <node CREATED="1506173866785" ID="ID_628330544" MODIFIED="1506173868870" TEXT="This directory is our build environment, which is what Docker calls a context or build context. Docker will upload the build context, as well as any files and directories contained in it, to our Docker daemon when the build is run. This provides the Docker daemon with direct access to any code, files or other data you might want to include in the image."/>
