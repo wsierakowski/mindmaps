@@ -94,5 +94,44 @@
 </node>
 </node>
 </node>
+<node CREATED="1508576443438" ID="ID_89088949" MODIFIED="1508579648202" POSITION="right" TEXT="Git Hooks">
+<node CREATED="1508576572812" ID="ID_279744119" MODIFIED="1508577484123" TEXT="People forget to run linting or tests when committing "/>
+<node CREATED="1508576689561" ID="ID_1597766982" MODIFIED="1508576709362" TEXT="Hooks directory is located inside of .git dir"/>
+<node CREATED="1508577409646" ID="ID_1858367829" MODIFIED="1508581423536" TEXT="Hook scripts aren&apos;t committed to source control which is a problem when collaborating">
+<node CREATED="1508581228559" ID="ID_1211885970" MODIFIED="1508581488372" TEXT="Hence we use ghooks that populates scripts to hooks folder (for all kind of hooks) and run scripts from package.json that is included in the source control"/>
+<node CREATED="1508581492582" ID="ID_1174737370" MODIFIED="1508581829520" TEXT="For example pre-commit script in .git/hooks will be looking for the pre-commit property in the package.json config.ghooks.pre-commit:npm run validate "/>
+</node>
+<node CREATED="1508579099959" ID="ID_1942605798" MODIFIED="1508579114044" TEXT="In package.json in scripts">
+<node CREATED="1508579114045" ID="ID_1316692389" MODIFIED="1508579132044" TEXT="npm-run-all --parallel lint test">
+<node CREATED="1508579134723" ID="ID_785485887" MODIFIED="1508579260175" TEXT="npm-run-all runs scripts simultaneously - we can do this here as lint and test aren&apos;t dependant on each other"/>
+<node CREATED="1508579314357" ID="ID_1146469400" MODIFIED="1508579334250" TEXT="lint and tests are also defined in scripts prop">
+<node CREATED="1508579263621" ID="ID_1509720862" MODIFIED="1508579341551" TEXT="lint is &quot;lint&quot;: &quot;eslint src&quot;"/>
+<node CREATED="1508579282998" ID="ID_563084697" MODIFIED="1508579336491" TEXT="test is &quot;test&quot;: &quot;nyc mocha&quot;"/>
+</node>
+</node>
+</node>
+<node CREATED="1508579536153" ID="ID_1963920693" MODIFIED="1508579599772" TEXT="If I want to still commit but without running tests, if I just need to fix commit msg for example">
+<node CREATED="1508578901299" ID="ID_614392564" MODIFIED="1508579601377" TEXT="git commit -am &quot;Correcting something&quot; --no-verify"/>
+</node>
+<node CREATED="1508579649486" ID="ID_133959186" MODIFIED="1508579655081" TEXT="ghooks">
+<node CREATED="1508579664289" ID="ID_1498904809" MODIFIED="1508579669522" TEXT="devDependency">
+<node CREATED="1508579669523" ID="ID_1668092358" MODIFIED="1508579681297" TEXT="&quot;ghooks&quot;: &quot;1.3.2&quot;"/>
+</node>
+<node CREATED="1508579729450" ID="ID_16524698" MODIFIED="1508580245015" TEXT="configuration">
+<node CREATED="1508579733661" ID="ID_577051937" MODIFIED="1508580243048" TEXT="in package.json config.ghooks"/>
+<node CREATED="1508580245016" ID="ID_249429898" MODIFIED="1508580277420" TEXT="&quot;pre-commit&quot;: &quot;npm run validate&quot;"/>
+<node CREATED="1508580818856" ID="ID_1812525796" MODIFIED="1508580991996" TEXT="after npm install we should see a bunch &#xa;of hooks populated in .git/hooks">
+<node CREATED="1508581358932" ID="ID_1281420701" MODIFIED="1508581365213" TEXT="pre-commit"/>
+<node CREATED="1508580993432" ID="ID_1117938431" MODIFIED="1508581001738" TEXT="commit-msg"/>
+<node CREATED="1508581001990" ID="ID_266922513" MODIFIED="1508581011295" TEXT="post-checkout"/>
+<node CREATED="1508581017331" ID="ID_1213232480" MODIFIED="1508581024664" TEXT="do not edit these files"/>
+<node CREATED="1508581060088" ID="ID_848595080" MODIFIED="1508581872945" TEXT="These scritps are looking up in package.json what corresponding scripts to run (config.ghooks) and then run them"/>
+</node>
+</node>
+<node CREATED="1508583213427" ID="ID_169569199" MODIFIED="1508583232828" TEXT="ghooks are now deprecated and husky is a replacement">
+<node CREATED="1508583232828" ID="ID_116073712" MODIFIED="1508583258595" TEXT="the difference is that the hooks are defined in scripts rather than config.ghooks"/>
+</node>
+</node>
+</node>
 </node>
 </map>
