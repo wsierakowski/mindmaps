@@ -133,5 +133,43 @@
 </node>
 </node>
 </node>
+<node CREATED="1508660436983" ID="ID_680450711" MODIFIED="1508660441523" POSITION="left" TEXT="Babel">
+<node CREATED="1508661371866" ID="ID_1836192031" MODIFIED="1508661390065" TEXT="Presets are collections of plugins">
+<node CREATED="1508661407628" ID="ID_911698652" MODIFIED="1508661436277" TEXT="By default Babel does nothing, we need to install plugins "/>
+</node>
+<node CREATED="1508661555223" ID="ID_1706886489" MODIFIED="1508661559220" TEXT="Configuration">
+<node CREATED="1508661559221" ID="ID_1909377752" MODIFIED="1508661573814" TEXT="package.json devDependencies">
+<node CREATED="1508661573816" ID="ID_598287537" MODIFIED="1508661597302" TEXT="&quot;babel-cli&quot;: &quot;6.11.4&quot;"/>
+<node CREATED="1508661598226" ID="ID_1819940355" MODIFIED="1508661711713" TEXT="&quot;babel-preset-es2015&quot;: &quot;6.9.0&quot;"/>
+</node>
+<node CREATED="1508661740928" ID="ID_262359998" MODIFIED="1508661764262" TEXT="Configuration in package.json or .babelrc"/>
+<node CREATED="1508661850340" ID="ID_1692577253" MODIFIED="1508661917322" TEXT="package.json conf in root">
+<node CREATED="1508661858669" ID="ID_1551431924" MODIFIED="1508661871400" TEXT="&quot;babel&quot;: {}">
+<node CREATED="1508661918455" ID="ID_1042293477" MODIFIED="1508661931776" TEXT="&quot;presets&quot;: []">
+<node CREATED="1508661931777" ID="ID_1603166684" MODIFIED="1508661941152" TEXT="&quot;es2015&quot;"/>
+</node>
+<node CREATED="1508661964779" ID="ID_1355717522" MODIFIED="1508661975999" TEXT="&quot;plugins&quot;: []">
+<node CREATED="1508661988356" ID="ID_1109806418" MODIFIED="1508661996745" TEXT="&quot;module-alias&quot;"/>
+</node>
+</node>
+</node>
+<node CREATED="1508662171371" ID="ID_781233635" MODIFIED="1508662180434" TEXT="package.json scripts">
+<node CREATED="1508662180436" ID="ID_1686144850" MODIFIED="1508663660755" TEXT="&quot;build&quot;: &quot;babel --out-dir dist src&quot;">
+<node CREATED="1508663662480" ID="ID_366354334" MODIFIED="1508663682148" TEXT="src is input dir, dist is output dir"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1508664579997" ID="ID_1681177563" MODIFIED="1508665143417" POSITION="right" TEXT="greenkeeper.io">
+<node CREATED="1508664764497" ID="ID_1923916862" MODIFIED="1508664974293" TEXT="Plug it to github repo, it will scan all dependecies in package.json and then anytime any of them gets an update, we will receive a PR with that dependency updated. With TravisCI set up, it will run tests to check if they pass with versions updated and if so it will merge these PRs."/>
+<node CREATED="1508665143418" ID="ID_581607642" MODIFIED="1508665163840" TEXT="Alternatively David can be used">
+<node CREATED="1508665163841" ID="ID_1053563042" MODIFIED="1508665167513" TEXT="david update">
+<node CREATED="1508665167514" ID="ID_1944653949" MODIFIED="1508665174941" TEXT="will update all dependencies"/>
+</node>
+</node>
+</node>
+<node CREATED="1508665720695" ID="ID_1524942644" MODIFIED="1508665726832" POSITION="left" TEXT="Treeshaking">
+<node CREATED="1508665726833" ID="ID_1403385285" MODIFIED="1508665818343" TEXT="If you distribute a version of your library that uses ES6 modules, and then people consume that with something like Webpack, Rollup or Browserify, then they can pick and choose the pieces of the library that they are actually using, which can significantly reduce file size. (important for browsers mostly)"/>
+</node>
 </node>
 </map>
