@@ -10,6 +10,11 @@
 <node CREATED="1508445656055" ID="ID_1372719283" MODIFIED="1508445834618" TEXT="NPM allows library users to configure dependecies (that support that) to put their settings to the config property. This means that the settings shouldn&apos;t be in the root of the package.json. This way if NPM decides to put a property with the same name as the name of the library, there won&apos;t be any conflict.">
 <node CREATED="1508445847471" ID="ID_996446834" MODIFIED="1508445896369" TEXT="&quot;config&quot;: {&#xa;   &quot;yourlib&quot;: {}&#xa;}"/>
 </node>
+<node CREATED="1508668632432" ID="ID_233814540" MODIFIED="1508668695908" TEXT="package.json scripts.validate">
+<node CREATED="1508668643077" ID="ID_509633007" MODIFIED="1508668693439" TEXT="When somebody comes to help us maintain our project, we want them to be able to validate they are set up after running npm install"/>
+<node CREATED="1508668696357" ID="ID_19111484" MODIFIED="1508668747982" TEXT="&quot;validate&quot;: &quot;npm-run-all --parallel test lint build&quot;"/>
+<node CREATED="1508668771956" ID="ID_308868703" MODIFIED="1508668795302" TEXT="Thanks to npm-run-all all things will run simultaneously"/>
+</node>
 </node>
 <node CREATED="1508441480456" ID="ID_1759992579" MODIFIED="1508441486801" POSITION="right" TEXT="ESLint"/>
 <node CREATED="1508441488887" ID="ID_575130199" MODIFIED="1508441689332" POSITION="left" TEXT="Tests">
@@ -154,10 +159,27 @@
 </node>
 </node>
 <node CREATED="1508662171371" ID="ID_781233635" MODIFIED="1508662180434" TEXT="package.json scripts">
-<node CREATED="1508662180436" ID="ID_1686144850" MODIFIED="1508663660755" TEXT="&quot;build&quot;: &quot;babel --out-dir dist src&quot;">
+<node CREATED="1508662180436" ID="ID_1686144850" MODIFIED="1508668254282" TEXT="&quot;build&quot;: &quot;babel --copy-files --out-dir dist --ignore *.test.js src&quot;">
 <node CREATED="1508663662480" ID="ID_366354334" MODIFIED="1508663682148" TEXT="src is input dir, dist is output dir"/>
+<node CREATED="1508666485353" ID="ID_1416766794" MODIFIED="1508666507623" TEXT="--ignore specifies what should be excluded during transpile process">
+<node CREATED="1508666737618" ID="ID_1378245644" MODIFIED="1508666751022" TEXT="We don&apos;t want to distribute the test files for example"/>
+<node CREATED="1508666836067" ID="ID_1812112241" MODIFIED="1508666873808" TEXT="Because what is in the dist folder is what we want to push to npm and nothing else that isn&apos;t needed"/>
+</node>
+<node CREATED="1508668261639" ID="ID_1037213184" MODIFIED="1508668285718" TEXT="--copy-files will include in the dist folder all files that aren&apos;t js and won&apos;t be compiled">
+<node CREATED="1508668285719" ID="ID_1579179920" MODIFIED="1508668362296" TEXT="This could be some dependency that complied script need, like for example a json file"/>
 </node>
 </node>
+</node>
+</node>
+<node CREATED="1508666603599" ID="ID_957835356" MODIFIED="1508667159510" TEXT="pre-build wipe">
+<node CREATED="1508666607756" ID="ID_1567131932" MODIFIED="1508666699461" TEXT="It is good to automatically wipe the dist folder before every rebuid"/>
+<node CREATED="1508666902097" ID="ID_261036747" MODIFIED="1508666935535" TEXT="package.json scripts.prebuild can be used for that purpose">
+<node CREATED="1508666935536" ID="ID_1308512235" MODIFIED="1508666969454" TEXT="We could just add &quot;rm -rf&quot; but this wouldn&apos;t work on Win"/>
+</node>
+<node CREATED="1508666971416" ID="ID_1861030133" MODIFIED="1508667016654" TEXT="we can use rimraf npm module for cross os compatibility">
+<node CREATED="1508667033992" ID="ID_1958698991" MODIFIED="1508667050094" TEXT="&quot;prebuild&quot;: &quot;rimraf dist&quot;"/>
+</node>
+<node CREATED="1508667159511" ID="ID_251300136" MODIFIED="1508667235336" TEXT="any script in package.json that can have it&apos;s pre- version, so that when I call that script like npm run build for example, it will also run automatically prebuild"/>
 </node>
 </node>
 <node CREATED="1508664579997" ID="ID_1681177563" MODIFIED="1508665143417" POSITION="right" TEXT="greenkeeper.io">
