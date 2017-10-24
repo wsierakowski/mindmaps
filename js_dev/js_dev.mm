@@ -15,9 +15,25 @@
 <node CREATED="1508668696357" ID="ID_19111484" MODIFIED="1508668747982" TEXT="&quot;validate&quot;: &quot;npm-run-all --parallel test lint build&quot;"/>
 <node CREATED="1508668771956" ID="ID_308868703" MODIFIED="1508668795302" TEXT="Thanks to npm-run-all all things will run simultaneously"/>
 </node>
+<node CREATED="1508785140170" ID="ID_1276890567" MODIFIED="1508785662946" TEXT="npm pack">
+<node CREATED="1508785153616" ID="ID_360716989" MODIFIED="1508785493056" TEXT="This is what is called internally when we publish to repo."/>
+<node CREATED="1508785493581" ID="ID_1444705467" MODIFIED="1508785514904" TEXT="We can use this to see what is sent to the repo to make sure it doesn&apos;t send something we don&apos;t want."/>
+<node CREATED="1508785516854" ID="ID_796657069" MODIFIED="1508785632816" TEXT="It will create archive: name-of-project-1.0.0.tgz"/>
+<node CREATED="1508785664008" ID="ID_1905628590" MODIFIED="1508785684555" TEXT="When we do that we will figure out that we don&apos;t need to include some directories like src or test."/>
 </node>
-<node CREATED="1508441480456" ID="ID_1759992579" MODIFIED="1508441486801" POSITION="right" TEXT="ESLint"/>
-<node CREATED="1508441488887" ID="ID_575130199" MODIFIED="1508441689332" POSITION="left" TEXT="Tests">
+<node CREATED="1508785758730" ID="ID_1200045211" MODIFIED="1508787157540" TEXT="package.json &quot;files&quot;: [&quot;dist&quot;]">
+<node CREATED="1508785818895" ID="ID_671191896" MODIFIED="1508785931474" TEXT="Specify what files and directories are going to be archived into package and sent to npm repository"/>
+<node CREATED="1508787157541" ID="ID_283793098" MODIFIED="1508787171605" TEXT="readme and licence are included by default"/>
+<node CREATED="1508787425167" ID="ID_926899187" MODIFIED="1508787459401" TEXT="if we exclude the src folder we need to remember to update our package.json main property to point at &quot;dist/index.js&quot; instead"/>
+</node>
+</node>
+<node CREATED="1508441480456" ID="ID_1759992579" MODIFIED="1508441486801" POSITION="right" TEXT="ESLint">
+<node CREATED="1508787292442" ID="ID_1883122762" MODIFIED="1508787307528" TEXT="extends">
+<node CREATED="1508787307529" ID="ID_1983112806" MODIFIED="1508787313062" TEXT="best-practices"/>
+<node CREATED="1508787313532" ID="ID_768097822" MODIFIED="1508787325477" TEXT="possible-errors"/>
+</node>
+</node>
+<node CREATED="1508441488887" ID="ID_575130199" MODIFIED="1508873000085" POSITION="left" TEXT="Tests">
 <node CREATED="1508441689333" ID="ID_652506921" MODIFIED="1508441695636" TEXT="Test Runners">
 <node CREATED="1508441495016" ID="ID_687243647" MODIFIED="1508441497755" TEXT="Mocha"/>
 </node>
@@ -98,6 +114,9 @@
 </node>
 </node>
 </node>
+<node CREATED="1508873000958" ID="ID_879864691" MODIFIED="1508873003803" TEXT="General">
+<node CREATED="1508873003805" ID="ID_790236074" MODIFIED="1508873017358" TEXT="You don&apos;t test the dependencies of your library or the tool set you&apos;re using"/>
+</node>
 </node>
 <node CREATED="1508576443438" ID="ID_89088949" MODIFIED="1508579648202" POSITION="right" TEXT="Git Hooks">
 <node CREATED="1508576572812" ID="ID_279744119" MODIFIED="1508577484123" TEXT="People forget to run linting or tests when committing "/>
@@ -170,6 +189,45 @@
 </node>
 </node>
 </node>
+<node CREATED="1508873495171" ID="ID_1147844534" MODIFIED="1508873509806" TEXT="Transpile files on the fly for nyc">
+<node CREATED="1508875800340" ID="ID_1442463414" MODIFIED="1508876274413" TEXT="We don&apos;t want to run tests on the transpiled code">
+<node CREATED="1508876018218" ID="ID_884984831" MODIFIED="1508876034319" TEXT="Transpiled code has some additional lines added by babel">
+<node CREATED="1508876549613" ID="ID_1356085573" MODIFIED="1508876773119" TEXT="We don&apos;t care about the coverage on these extra lines"/>
+</node>
+<node CREATED="1508876078230" ID="ID_70355314" MODIFIED="1508876090407" TEXT="We need to transpile our test and source code on the fly"/>
+<node CREATED="1508875515266" ID="ID_675519408" MODIFIED="1508876285130" TEXT="nyc doesn&apos;t understand ES6 so it needs to build a report on the transpiled code "/>
+</node>
+<node CREATED="1508873509807" ID="ID_665661721" MODIFIED="1508876313335" TEXT="package.json devDependencies">
+<node CREATED="1508876315119" ID="ID_1477558920" MODIFIED="1508876328593" TEXT=" &quot;babel-register&quot;: &quot;6.11.6&quot; "/>
+<node CREATED="1508876329149" ID="ID_766783166" MODIFIED="1508876331303" TEXT="babel-plugin-istanbul&quot;: &quot;1.0.3&quot;"/>
+</node>
+<node CREATED="1508874152959" ID="ID_1861978101" MODIFIED="1508874179170" TEXT="in package.json &quot;babel&quot;">
+<node CREATED="1508874162655" ID="ID_1032216455" MODIFIED="1508874175922" TEXT="&quot;plugins&quot;: [&quot;istanbul&quot;]">
+<node CREATED="1508874208716" ID="ID_1938863265" MODIFIED="1508874228986" TEXT="&quot;istanbul&quot; is short for &quot;babel-plugin-istanbul&quot;"/>
+</node>
+</node>
+<node CREATED="1508873609760" ID="ID_761696848" MODIFIED="1508876351417" TEXT="in package.json &quot;nyc&quot;">
+<node CREATED="1508873620642" ID="ID_1495367925" MODIFIED="1508873632507" TEXT="&quot;instrument&quot;: false"/>
+<node CREATED="1508873646679" ID="ID_1707835578" MODIFIED="1508873656255" TEXT="&quot;sourceMap&quot;: false"/>
+<node CREATED="1508873697357" ID="ID_490087293" MODIFIED="1508873935764" TEXT="&quot;require&quot;: [&quot;babel-register&quot;]">
+<node CREATED="1508873935765" ID="ID_332016420" MODIFIED="1508873941430" TEXT="This will tell nyc &quot;hey, before you spawn off this mocha cli, I want you to require this thing and have it do something&quot;"/>
+<node CREATED="1508873751713" ID="ID_393032860" MODIFIED="1508873809986" TEXT="babel register will hijack the require function and then anything that uses require will have that code transpiled on the fly"/>
+</node>
+</node>
+<node CREATED="1508874395603" ID="ID_1057156509" MODIFIED="1508875260204" TEXT="When we run npm run build we will notice that index.js has the nyc code">
+<node CREATED="1508874500729" ID="ID_1496920950" MODIFIED="1508875010927" TEXT="To fix this we want to differentiate our test env from normall"/>
+<node CREATED="1508874928074" ID="ID_951162035" MODIFIED="1508874940319" TEXT="in package.json &quot;babel&quot;">
+<node CREATED="1508874956509" ID="ID_158901552" MODIFIED="1508875001505" TEXT="env.test.plugins:[&quot;istanbul&quot;]">
+<node CREATED="1508875121106" ID="ID_226308127" MODIFIED="1508875218160" TEXT="The &quot;test&quot; is what we should pass as env variable before we run the tests"/>
+</node>
+</node>
+<node CREATED="1508875041909" ID="ID_1067158392" MODIFIED="1508875080470" TEXT="We tell babel to behave differently given a certain environment"/>
+<node CREATED="1508875260808" ID="ID_1162619700" MODIFIED="1508875302742" TEXT="In package.json &quot;scripts&quot;">
+<node CREATED="1508875273086" ID="ID_1577925573" MODIFIED="1508875294723" TEXT="&quot;test&quot;: &quot;NODE_ENV=test nyc mocha&quot;"/>
+</node>
+<node CREATED="1508875357498" ID="ID_1830648535" MODIFIED="1508875438898" TEXT="Now when we run &quot;npm run build&quot; we will not have nyc garbage and nyc will get transpiled code only when running &quot;npm t&quot;"/>
+</node>
+</node>
 </node>
 <node CREATED="1508666603599" ID="ID_957835356" MODIFIED="1508667159510" TEXT="pre-build wipe">
 <node CREATED="1508666607756" ID="ID_1567131932" MODIFIED="1508666699461" TEXT="It is good to automatically wipe the dist folder before every rebuid"/>
@@ -192,6 +250,16 @@
 </node>
 <node CREATED="1508665720695" ID="ID_1524942644" MODIFIED="1508665726832" POSITION="left" TEXT="Treeshaking">
 <node CREATED="1508665726833" ID="ID_1403385285" MODIFIED="1508665818343" TEXT="If you distribute a version of your library that uses ES6 modules, and then people consume that with something like Webpack, Rollup or Browserify, then they can pick and choose the pieces of the library that they are actually using, which can significantly reduce file size. (important for browsers mostly)"/>
+</node>
+<node CREATED="1508788853567" ID="ID_320334948" MODIFIED="1508788856034" POSITION="right" TEXT="git">
+<node CREATED="1508788856035" ID="ID_621906661" MODIFIED="1508788857648" TEXT="tips">
+<node CREATED="1508788857651" ID="ID_279331465" MODIFIED="1508788906563" TEXT="git diff name_of_other_branch">
+<node CREATED="1508788962743" ID="ID_200985608" MODIFIED="1508788977099" TEXT="Use diff-so-fancy to get nice color output"/>
+</node>
+<node CREATED="1508791765213" ID="ID_1251235481" MODIFIED="1508791768940" TEXT=".gitignore">
+<node CREATED="1508791768940" ID="ID_493576662" MODIFIED="1508791833961" TEXT="Remember to add /dist folder as we don&apos;t want to keep compiled files in the source repo (we can keep them in another branch named latest for example)"/>
+</node>
+</node>
 </node>
 </node>
 </map>
