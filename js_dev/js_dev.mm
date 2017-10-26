@@ -1,6 +1,6 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1508441258413" ID="ID_681257263" MODIFIED="1508441468575" TEXT="JS Project">
+<node CREATED="1508441258413" ID="ID_681257263" MODIFIED="1508877164711" TEXT="JS Project">
 <node CREATED="1508441364048" ID="ID_1789174684" MODIFIED="1508441383525" POSITION="right" TEXT="Text files">
 <node CREATED="1508441417319" ID="ID_548654128" MODIFIED="1508441422448" TEXT="License"/>
 <node CREATED="1508441423534" ID="ID_413675911" MODIFIED="1508441429124" TEXT="Code of conduct"/>
@@ -25,6 +25,17 @@
 <node CREATED="1508785818895" ID="ID_671191896" MODIFIED="1508785931474" TEXT="Specify what files and directories are going to be archived into package and sent to npm repository"/>
 <node CREATED="1508787157541" ID="ID_283793098" MODIFIED="1508787171605" TEXT="readme and licence are included by default"/>
 <node CREATED="1508787425167" ID="ID_926899187" MODIFIED="1508787459401" TEXT="if we exclude the src folder we need to remember to update our package.json main property to point at &quot;dist/index.js&quot; instead"/>
+</node>
+<node CREATED="1509050799931" ID="ID_763292013" MODIFIED="1509051368237" TEXT="publishing to">
+<node CREATED="1509050804221" ID="ID_1704659769" MODIFIED="1509051367977" TEXT="Register to NPM"/>
+<node CREATED="1509051368238" ID="ID_797223392" MODIFIED="1509051379102" TEXT="npm login">
+<node CREATED="1509051379103" ID="ID_774990007" MODIFIED="1509051398077" TEXT="Could be prepopulated if details are in .npmrc"/>
+</node>
+<node CREATED="1509051501672" ID="ID_603632973" MODIFIED="1509051506223" TEXT="npm publish"/>
+<node CREATED="1509053467034" ID="ID_1317240814" MODIFIED="1509053495698" TEXT="Why do I have to publish again with a higher version number even for a tiny change (a mistake for example)">
+<node CREATED="1509053496663" ID="ID_882469185" MODIFIED="1509053546815" TEXT="For safety reasons - a person could update a package we are using without our knowledge"/>
+<node CREATED="1509053547739" ID="ID_532230839" MODIFIED="1509053556799" TEXT="Hence version numbers are locked"/>
+</node>
 </node>
 </node>
 <node CREATED="1508441480456" ID="ID_1759992579" MODIFIED="1508441486801" POSITION="right" TEXT="ESLint">
@@ -258,6 +269,70 @@
 </node>
 <node CREATED="1508791765213" ID="ID_1251235481" MODIFIED="1508791768940" TEXT=".gitignore">
 <node CREATED="1508791768940" ID="ID_493576662" MODIFIED="1508791833961" TEXT="Remember to add /dist folder as we don&apos;t want to keep compiled files in the source repo (we can keep them in another branch named latest for example)"/>
+</node>
+</node>
+</node>
+<node CREATED="1508877165466" ID="ID_448270424" MODIFIED="1508877172867" POSITION="left" TEXT="Webpack">
+<node CREATED="1508878256358" ID="ID_198222282" MODIFIED="1508878287865" TEXT="Browsers don&apos;t understand the commonjs modules (require) and webpack solves that problem"/>
+<node CREATED="1508878292929" ID="ID_1935502589" MODIFIED="1508878487169" TEXT="People who are consuming our library and using the bundler won&apos;t need this. But it is not good for the library authour to ask people to use a specific budler like Webpack in order to be able to use the lib."/>
+</node>
+<node CREATED="1509044664230" ID="ID_187640552" MODIFIED="1509044676960" POSITION="right" TEXT="CI">
+<node CREATED="1509044679009" ID="ID_194159626" MODIFIED="1509044682885" TEXT="Travis">
+<node CREATED="1509044784103" ID="ID_754225412" MODIFIED="1509044788221" TEXT="Setup">
+<node CREATED="1509044788223" ID="ID_690520671" MODIFIED="1509045379439" TEXT="SignIn with GitHub and sync repos"/>
+<node CREATED="1509045444997" ID="ID_688187394" MODIFIED="1509045529521" TEXT="Turn on the repo and in settings set to build only if travis.yml is present"/>
+<node CREATED="1509045705592" ID="ID_940638158" MODIFIED="1509045947852" TEXT=".travis.yml in the project root">
+<node CREATED="1509045717494" ID="ID_1431569543" MODIFIED="1509045759662" TEXT="language: node_js"/>
+<node CREATED="1509045843335" ID="ID_905390042" MODIFIED="1509045863644" TEXT="cache.directories. - node_modules">
+<node CREATED="1509045863646" ID="ID_618032552" MODIFIED="1509045887795" TEXT="since they don&apos;t change that often travis will cache them to speed up the build"/>
+<node CREATED="1509048560304" ID="ID_1137607312" MODIFIED="1509048609829" TEXT="when run 2nd time it should be quicker as it won&apos;t install node_modules"/>
+</node>
+<node CREATED="1509045916016" ID="ID_1994027992" MODIFIED="1509045923582" TEXT="node_js: 6">
+<node CREATED="1509045966851" ID="ID_1566230878" MODIFIED="1509045973976" TEXT="build this on node 6"/>
+</node>
+<node CREATED="1509045947853" ID="ID_1396131028" MODIFIED="1509045965351" TEXT="branches.only: -master"/>
+<node CREATED="1509046009511" ID="ID_1831151565" MODIFIED="1509046022935" TEXT="notofications:.email: false"/>
+<node CREATED="1509046023262" ID="ID_1974310503" MODIFIED="1509046032678" TEXT="script: - npm run validate">
+<node CREATED="1509046105833" ID="ID_552822166" MODIFIED="1509046113566" TEXT="which is test lint build"/>
+</node>
+</node>
+</node>
+<node CREATED="1509047970709" ID="ID_1496195871" MODIFIED="1509048027378" TEXT="quick access">
+<node CREATED="1509047972537" ID="ID_1085069705" MODIFIED="1509048019691" TEXT="travis-ci.org/githubname/reponame"/>
+</node>
+</node>
+<node CREATED="1509047146792" ID="ID_852624350" MODIFIED="1509047149940" TEXT="Codecov">
+<node CREATED="1509047667181" ID="ID_1450090044" MODIFIED="1509047676771" TEXT="Register first">
+<node CREATED="1509049641389" ID="ID_530903538" MODIFIED="1509049658764" TEXT="When Codecov is used with Travis then there is no need for tokens">
+<node CREATED="1509049684688" ID="ID_1750988609" MODIFIED="1509049830362" TEXT="When used locally, then in order to submit, authentication is required"/>
+</node>
+</node>
+<node CREATED="1509047149941" ID="ID_1071669436" MODIFIED="1509047272180" TEXT="package.json">
+<node CREATED="1509047273408" ID="ID_1040090800" MODIFIED="1509047280959" TEXT="devDeps">
+<node CREATED="1509047182664" ID="ID_1338045188" MODIFIED="1509047285628" TEXT="&quot;codecov&quot;: &quot;1.0.1&quot;"/>
+</node>
+<node CREATED="1509047295329" ID="ID_562542239" MODIFIED="1509047299983" TEXT="scripts">
+<node CREATED="1509047299985" ID="ID_1306309935" MODIFIED="1509047336954" TEXT="&quot;report-coverage&quot;: &quot;cat ./coverage/lcov.info | codecov&quot;">
+<node CREATED="1509047328226" ID="ID_791980393" MODIFIED="1509047355867" TEXT="lcov.info is the file generated by nyc"/>
+</node>
+</node>
+</node>
+<node CREATED="1509047680020" ID="ID_1799182502" MODIFIED="1509047688533" TEXT=".travis.yml">
+<node CREATED="1509047688534" ID="ID_876364128" MODIFIED="1509047695780" TEXT="after_success:">
+<node CREATED="1509047695781" ID="ID_1488675870" MODIFIED="1509047706075" TEXT="- npm run report-coverage"/>
+</node>
+</node>
+<node CREATED="1509048811457" ID="ID_64403630" MODIFIED="1509048819573" TEXT="quick access">
+<node CREATED="1509048819574" ID="ID_62436515" MODIFIED="1509049292450" TEXT="codecov.io/github/github-name/reponame"/>
+</node>
+</node>
+<node CREATED="1509050168097" ID="ID_624104373" MODIFIED="1509050193898" TEXT="Get a badge from shields.io">
+<node CREATED="1509050308371" ID="ID_1109120223" MODIFIED="1509050326399" TEXT="They demonstrate commitment level to the project"/>
+<node CREATED="1509050172135" ID="ID_1675289030" MODIFIED="1509050198359" TEXT="Travis">
+<node CREATED="1509050244977" ID="ID_554408951" MODIFIED="1509050263055" TEXT="img.shields.io/travis/githubname/reponame"/>
+</node>
+<node CREATED="1509050198730" ID="ID_835643155" MODIFIED="1509050201434" TEXT="Codecov">
+<node CREATED="1509050201435" ID="ID_735625035" MODIFIED="1509050230388" TEXT="img.shields.io/codecov/c/github/githubname/reponame"/>
 </node>
 </node>
 </node>
