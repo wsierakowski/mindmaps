@@ -37,6 +37,55 @@
 <node CREATED="1509053547739" ID="ID_532230839" MODIFIED="1509053556799" TEXT="Hence version numbers are locked"/>
 </node>
 </node>
+<node CREATED="1509272620720" ID="ID_1841925240" MODIFIED="1509273353412" TEXT="npm version">
+<node CREATED="1509272627113" ID="ID_196509131" MODIFIED="1509273950761" TEXT="&quot;major&quot; or &quot;minor&quot; or &quot;patch&quot; ... and more"/>
+<node CREATED="1509273353722" ID="ID_290473227" MODIFIED="1509273373454" TEXT="Helps in automatically building changelog with git commit messages">
+<node CREATED="1509273390816" ID="ID_265934264" MODIFIED="1509277628038" TEXT="git message: &quot;fix(methodname): commit msg that will appear in changelog&quot;">
+<node CREATED="1509273589670" ID="ID_816813527" MODIFIED="1509273612698" TEXT="change_type(change_scope): change_subject">
+<node CREATED="1509277326358" ID="ID_343015190" MODIFIED="1509277332618" TEXT="types">
+<node CREATED="1509277329129" ID="ID_1894731089" MODIFIED="1509277332340" TEXT="fix"/>
+<node CREATED="1509277332619" ID="ID_1011399829" MODIFIED="1509277334698" TEXT="feat"/>
+<node CREATED="1509277334855" ID="ID_1525559908" MODIFIED="1509277339356" TEXT="perf"/>
+<node CREATED="1509277354185" ID="ID_472786818" MODIFIED="1509277367130" TEXT="docs, chore, style, refactor, test"/>
+</node>
+<node CREATED="1509277421289" ID="ID_94197643" MODIFIED="1509277432395" TEXT="scope">
+<node CREATED="1509277432396" ID="ID_261572913" MODIFIED="1509277446642" TEXT="method or module that changed"/>
+</node>
+<node CREATED="1509277447627" ID="ID_1196936853" MODIFIED="1509277559208" TEXT="subject">
+<node CREATED="1509277450074" ID="ID_428153360" MODIFIED="1509277465890" TEXT="imperative, present tense">
+<node CREATED="1509277465891" ID="ID_915399764" MODIFIED="1509277477972" TEXT="add/change.."/>
+</node>
+<node CREATED="1509277485997" ID="ID_1397511449" MODIFIED="1509277499765" TEXT="do not capitalize first letter"/>
+<node CREATED="1509277500660" ID="ID_548017626" MODIFIED="1509277508880" TEXT="no dot at the end"/>
+<node CREATED="1509277559941" ID="ID_1173603701" MODIFIED="1509277578298" TEXT="if this change is applied then that will ..."/>
+</node>
+</node>
+<node CREATED="1509277628564" ID="ID_177066618" MODIFIED="1509277757165" TEXT="&lt;blank line&gt;body&lt;blank line&gt;footer">
+<node CREATED="1509277643502" ID="ID_1602257462" MODIFIED="1509277676943" TEXT="body describes motivation"/>
+<node CREATED="1509277757166" ID="ID_1568094894" MODIFIED="1509277765416" TEXT="footer describes breaking changes">
+<node CREATED="1509277777716" ID="ID_1897236641" MODIFIED="1509277796960" TEXT="or if a commit closes github issue then specify that issue number"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1509273966527" ID="ID_1859879551" MODIFIED="1509273972453" TEXT="npm version major">
+<node CREATED="1509273972454" ID="ID_1613391248" MODIFIED="1509273991962" TEXT="will update version number from 1.0.0 to 2.0.0 (for example) in package.json version"/>
+<node CREATED="1509273993404" ID="ID_922838041" MODIFIED="1509274190025" TEXT="will add a tag (2.0.0) to github repository"/>
+</node>
+</node>
+<node CREATED="1509273148896" ID="ID_59361309" MODIFIED="1509274276491" TEXT="npm deprecate">
+<node CREATED="1509272798536" FOLDED="true" ID="ID_1336989052" MODIFIED="1509273186057" TEXT="Will display a warning message when installing a package">
+<node CREATED="1509272823503" ID="ID_833923825" MODIFIED="1509272984235" TEXT="Reasons for deprecation">
+<node CREATED="1509272973911" ID="ID_769876796" MODIFIED="1509273072608" TEXT="mistake when publishing a package with a particular version"/>
+<node CREATED="1509273072760" ID="ID_1852056807" MODIFIED="1509273094377" TEXT="other package does the exactly same task or is more feature rich"/>
+<node CREATED="1509273094584" ID="ID_1478377254" MODIFIED="1509273115778" TEXT="plain Node can now do the same task and we don&apos;t need unnecessary abstraction"/>
+<node CREATED="1509273127964" ID="ID_185182526" MODIFIED="1509273141550" TEXT="security fix in the newer version"/>
+</node>
+</node>
+<node CREATED="1509274276492" ID="ID_735464254" MODIFIED="1509274313430" TEXT="packagename&lt;@major.minor.path&gt; &lt;meassage&gt;">
+<node CREATED="1509274278547" ID="ID_1565590572" MODIFIED="1509274307353" TEXT="npm deprecate github-names@2.0.0 mistakenly published"/>
+</node>
+</node>
 </node>
 <node CREATED="1508441480456" ID="ID_1759992579" MODIFIED="1508441486801" POSITION="right" TEXT="ESLint">
 <node CREATED="1508787292442" ID="ID_1883122762" MODIFIED="1508787307528" TEXT="extends">
