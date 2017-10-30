@@ -39,35 +39,6 @@
 </node>
 <node CREATED="1509272620720" ID="ID_1841925240" MODIFIED="1509273353412" TEXT="npm version">
 <node CREATED="1509272627113" ID="ID_196509131" MODIFIED="1509273950761" TEXT="&quot;major&quot; or &quot;minor&quot; or &quot;patch&quot; ... and more"/>
-<node CREATED="1509273353722" ID="ID_290473227" MODIFIED="1509273373454" TEXT="Helps in automatically building changelog with git commit messages">
-<node CREATED="1509273390816" ID="ID_265934264" MODIFIED="1509277628038" TEXT="git message: &quot;fix(methodname): commit msg that will appear in changelog&quot;">
-<node CREATED="1509273589670" ID="ID_816813527" MODIFIED="1509273612698" TEXT="change_type(change_scope): change_subject">
-<node CREATED="1509277326358" ID="ID_343015190" MODIFIED="1509277332618" TEXT="types">
-<node CREATED="1509277329129" ID="ID_1894731089" MODIFIED="1509277332340" TEXT="fix"/>
-<node CREATED="1509277332619" ID="ID_1011399829" MODIFIED="1509277334698" TEXT="feat"/>
-<node CREATED="1509277334855" ID="ID_1525559908" MODIFIED="1509277339356" TEXT="perf"/>
-<node CREATED="1509277354185" ID="ID_472786818" MODIFIED="1509277367130" TEXT="docs, chore, style, refactor, test"/>
-</node>
-<node CREATED="1509277421289" ID="ID_94197643" MODIFIED="1509277432395" TEXT="scope">
-<node CREATED="1509277432396" ID="ID_261572913" MODIFIED="1509277446642" TEXT="method or module that changed"/>
-</node>
-<node CREATED="1509277447627" ID="ID_1196936853" MODIFIED="1509277559208" TEXT="subject">
-<node CREATED="1509277450074" ID="ID_428153360" MODIFIED="1509277465890" TEXT="imperative, present tense">
-<node CREATED="1509277465891" ID="ID_915399764" MODIFIED="1509277477972" TEXT="add/change.."/>
-</node>
-<node CREATED="1509277485997" ID="ID_1397511449" MODIFIED="1509277499765" TEXT="do not capitalize first letter"/>
-<node CREATED="1509277500660" ID="ID_548017626" MODIFIED="1509277508880" TEXT="no dot at the end"/>
-<node CREATED="1509277559941" ID="ID_1173603701" MODIFIED="1509277578298" TEXT="if this change is applied then that will ..."/>
-</node>
-</node>
-<node CREATED="1509277628564" ID="ID_177066618" MODIFIED="1509277757165" TEXT="&lt;blank line&gt;body&lt;blank line&gt;footer">
-<node CREATED="1509277643502" ID="ID_1602257462" MODIFIED="1509277676943" TEXT="body describes motivation"/>
-<node CREATED="1509277757166" ID="ID_1568094894" MODIFIED="1509277765416" TEXT="footer describes breaking changes">
-<node CREATED="1509277777716" ID="ID_1897236641" MODIFIED="1509277796960" TEXT="or if a commit closes github issue then specify that issue number"/>
-</node>
-</node>
-</node>
-</node>
 <node CREATED="1509273966527" ID="ID_1859879551" MODIFIED="1509273972453" TEXT="npm version major">
 <node CREATED="1509273972454" ID="ID_1613391248" MODIFIED="1509273991962" TEXT="will update version number from 1.0.0 to 2.0.0 (for example) in package.json version"/>
 <node CREATED="1509273993404" ID="ID_922838041" MODIFIED="1509274190025" TEXT="will add a tag (2.0.0) to github repository"/>
@@ -84,6 +55,11 @@
 </node>
 <node CREATED="1509274276492" ID="ID_735464254" MODIFIED="1509274313430" TEXT="packagename&lt;@major.minor.path&gt; &lt;meassage&gt;">
 <node CREATED="1509274278547" ID="ID_1565590572" MODIFIED="1509274307353" TEXT="npm deprecate github-names@2.0.0 mistakenly published"/>
+</node>
+</node>
+<node CREATED="1509364467390" ID="ID_1849046675" MODIFIED="1509364471549" TEXT="shrinkwap">
+<node CREATED="1509364471550" ID="ID_210364550" MODIFIED="1509364477015" TEXT="lock version numbers">
+<node CREATED="1509364477016" ID="ID_368148668" MODIFIED="1509364502631" TEXT="an author can release a patch release of his lib and infect all people that didn&apos;t lock their versions"/>
 </node>
 </node>
 </node>
@@ -382,6 +358,120 @@
 </node>
 <node CREATED="1509050198730" ID="ID_835643155" MODIFIED="1509050201434" TEXT="Codecov">
 <node CREATED="1509050201435" ID="ID_735625035" MODIFIED="1509050230388" TEXT="img.shields.io/codecov/c/github/githubname/reponame"/>
+</node>
+</node>
+</node>
+<node CREATED="1509356891414" ID="ID_927305252" MODIFIED="1509356912370" POSITION="left" TEXT="Semantic release">
+<node CREATED="1509356912372" ID="ID_878781908" MODIFIED="1509357826972" TEXT="Semantic-release-cli">
+<node CREATED="1509357806434" ID="ID_1302442852" MODIFIED="1509357843501" TEXT="Description">
+<node CREATED="1509357030983" ID="ID_1985744324" MODIFIED="1509357157144" TEXT="It will hook into Travis to run release script after build is successfulll"/>
+<node CREATED="1509357150844" ID="ID_580642213" MODIFIED="1509357209685" TEXT="As part of release script it will set version number in package.json">
+<node CREATED="1509357209963" ID="ID_473628515" MODIFIED="1509357477615" TEXT="Based off of our commit msgs, git tags and the current version on github">
+<node CREATED="1509357535612" ID="ID_1248004449" MODIFIED="1509357642785" TEXT="&quot;git push --tags&quot; to push tags that have been created by npm version"/>
+</node>
+</node>
+<node CREATED="1509357255727" ID="ID_1624457033" MODIFIED="1509357298604" TEXT="Will update the GitHub Releases page with a release that represents all the changes that we&apos;ve made">
+<node CREATED="1509357706729" ID="ID_910001408" MODIFIED="1509357724145" TEXT="Based on commits that have been done since the last version (based on tags)"/>
+</node>
+</node>
+<node CREATED="1509357859227" ID="ID_1001455195" MODIFIED="1509357862699" TEXT="Installation">
+<node CREATED="1509357862700" ID="ID_211961760" MODIFIED="1509357877198" TEXT="npm i semantic-release-cli -g">
+<node CREATED="1509357877199" ID="ID_154483579" MODIFIED="1509357882508" TEXT="install globally"/>
+</node>
+<node CREATED="1509357905029" ID="ID_2105958" MODIFIED="1509358008178" TEXT="semantic-release-cli setup">
+<node CREATED="1509357983233" ID="ID_1500407510" MODIFIED="1509358007314" TEXT="it will ask about github and npm username"/>
+<node CREATED="1509358008178" ID="ID_802022591" MODIFIED="1509358079674" TEXT="it will generate tokens for github and npm and will use those to add to Travis build automatically so that it could do the releasing and the GitHub changelog generation for us"/>
+<node CREATED="1509358320326" ID="ID_622891889" MODIFIED="1509358359713" TEXT="it will change a lot of things in travis.yaml that can be actually reverted"/>
+<node CREATED="1509358467447" ID="ID_520249295" MODIFIED="1509358471464" TEXT="in package.json">
+<node CREATED="1509358471465" ID="ID_667110665" MODIFIED="1509361707761" TEXT="removes version (is not needed as it will be managed automatically)">
+<node CREATED="1509361709460" ID="ID_43757162" MODIFIED="1509361745437" TEXT="good practice - put something like &quot;version&quot;: &quot;0.0.0-semantically releases&quot;">
+<node CREATED="1509361750002" ID="ID_1232779959" MODIFIED="1509361763205" TEXT="to give indication to people as to what may be going on"/>
+</node>
+</node>
+<node CREATED="1509358475714" ID="ID_310387278" MODIFIED="1509359954267" TEXT="adds to script.semantic-release: &quot;semtantic-release pre &amp;&amp; npm publish &amp;&amp; semantic-release post&quot;">
+<node CREATED="1509358724999" ID="ID_77864649" MODIFIED="1509359885489" TEXT="pre is going to find the most recent version on GitHub and then it is going to  go to the current master version or the repo that it&apos;s building and it&apos;s going to find the difference  between those two, all of the commits between the most recently released version and the version that its looking at right now - and it will add it to package.json">
+<node CREATED="1509359465984" ID="ID_1073971489" MODIFIED="1509359491363" TEXT="based on the commit messages it is going to determine what the new version is going to be"/>
+<node CREATED="1509359729313" ID="ID_628029469" MODIFIED="1509359740339" TEXT="if you have fix then it is going to be a patch"/>
+<node CREATED="1509359741321" ID="ID_1481261001" MODIFIED="1509359754245" TEXT="if you have feat it is going to be minor"/>
+<node CREATED="1509359765842" ID="ID_357962897" MODIFIED="1509359789063" TEXT="if words BREAKING CHANGE are included in the commit, it is going to be major"/>
+</node>
+<node CREATED="1509359914142" ID="ID_545211763" MODIFIED="1509359925177" TEXT="then it will npm publish because it has a token"/>
+<node CREATED="1509359954267" ID="ID_1507497125" MODIFIED="1509360008734" TEXT="post will make a git tag, push it to GitHub, then interact with GH API to create a release for that tag and have the changelog mede for us based off our commit messages"/>
+</node>
+</node>
+<node CREATED="1509361848335" ID="ID_1569914474" MODIFIED="1509361854326" TEXT=".travis.yaml">
+<node CREATED="1509361854327" ID="ID_1357241817" MODIFIED="1509361864931" TEXT="after_success: - npm run release"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1509362044085" ID="ID_463777502" MODIFIED="1509362062845" TEXT="Git commit messages">
+<node CREATED="1509273353722" ID="ID_290473227" MODIFIED="1509362067305" TEXT="Helps in automatically building changelog with git commit messages"/>
+<node CREATED="1509273390816" ID="ID_265934264" MODIFIED="1509277628038" TEXT="git message: &quot;fix(methodname): commit msg that will appear in changelog&quot;">
+<node CREATED="1509273589670" ID="ID_816813527" MODIFIED="1509362099952" TEXT="change_type(change_scope): change_subject">
+<node CREATED="1509277326358" ID="ID_343015190" MODIFIED="1509277332618" TEXT="types">
+<node CREATED="1509277329129" ID="ID_1894731089" MODIFIED="1509277332340" TEXT="fix"/>
+<node CREATED="1509277332619" ID="ID_1011399829" MODIFIED="1509277334698" TEXT="feat"/>
+<node CREATED="1509277334855" ID="ID_1525559908" MODIFIED="1509277339356" TEXT="perf"/>
+<node CREATED="1509277354185" ID="ID_472786818" MODIFIED="1509277367130" TEXT="docs, chore, style, refactor, test"/>
+</node>
+<node CREATED="1509277421289" ID="ID_94197643" MODIFIED="1509277432395" TEXT="scope">
+<node CREATED="1509277432396" ID="ID_261572913" MODIFIED="1509277446642" TEXT="method or module that changed"/>
+</node>
+<node CREATED="1509277447627" ID="ID_1196936853" MODIFIED="1509277559208" TEXT="subject">
+<node CREATED="1509277450074" ID="ID_428153360" MODIFIED="1509277465890" TEXT="imperative, present tense">
+<node CREATED="1509277465891" ID="ID_915399764" MODIFIED="1509277477972" TEXT="add/change.."/>
+</node>
+<node CREATED="1509277485997" ID="ID_1397511449" MODIFIED="1509277499765" TEXT="do not capitalize first letter"/>
+<node CREATED="1509277500660" ID="ID_548017626" MODIFIED="1509277508880" TEXT="no dot at the end"/>
+<node CREATED="1509277559941" ID="ID_1173603701" MODIFIED="1509277578298" TEXT="if this change is applied then that will ..."/>
+</node>
+</node>
+<node CREATED="1509277628564" ID="ID_177066618" MODIFIED="1509277757165" TEXT="&lt;blank line&gt;body&lt;blank line&gt;footer">
+<node CREATED="1509277643502" ID="ID_1602257462" MODIFIED="1509277676943" TEXT="body describes motivation"/>
+<node CREATED="1509277757166" ID="ID_1568094894" MODIFIED="1509277765416" TEXT="footer describes breaking changes">
+<node CREATED="1509277777716" ID="ID_1897236641" MODIFIED="1509277796960" TEXT="or if a commit closes github issue then specify that issue number"/>
+</node>
+</node>
+<node CREATED="1509362102510" ID="ID_843885888" MODIFIED="1509362138150" TEXT="examples">
+<node CREATED="1509362138640" ID="ID_452106813" MODIFIED="1509362141910" TEXT="feat(pencil): add &apos;graphiteWidth&apos; option"/>
+<node CREATED="1509362146721" ID="ID_37552943" MODIFIED="1509362182465" TEXT="fix(graphite): stop graphite breaking when width &lt; 0.1&#xa;&#xa;Closes #28"/>
+<node CREATED="1509362184649" ID="ID_1654296011" MODIFIED="1509362242116" TEXT="per(pencil): remove graphiteWidth option&#xa;&#xa;BREAKING CHANGE: The grahpiteWidth option has been removed."/>
+</node>
+</node>
+</node>
+<node CREATED="1509363055296" ID="ID_1376174657" MODIFIED="1509363059367" TEXT="commitizen">
+<node CREATED="1509363062599" ID="ID_303791581" MODIFIED="1509363268211" TEXT="install (dev dep)">
+<node CREATED="1509363099279" ID="ID_1090525901" MODIFIED="1509363104382" TEXT="commitizen">
+<node CREATED="1509363706888" ID="ID_1667674816" MODIFIED="1509363725938" TEXT="package.json: scripts.commit: &quot;git-cz&quot;"/>
+<node CREATED="1509363754152" ID="ID_92952066" MODIFIED="1509363764431" TEXT="we run it: npm run commit"/>
+<node CREATED="1509363811249" ID="ID_676463479" MODIFIED="1509363883874" TEXT="it will print a prompt asking what kind of commit it is (feat, fix, docs, chore)..."/>
+</node>
+<node CREATED="1509363104730" ID="ID_380032105" MODIFIED="1509363135751" TEXT="cz-conventional-changelog">
+<node CREATED="1509363137322" ID="ID_1795096523" MODIFIED="1509363154338" TEXT="plugin to tell commitizen what questions to ask"/>
+<node CREATED="1509363608498" ID="ID_1942190563" MODIFIED="1509363637675" TEXT="package.json: config.commitizen:path: &quot;cz-conventional-changelog&quot;&quot;"/>
+</node>
+<node CREATED="1509363155713" ID="ID_691367575" MODIFIED="1509363161217" TEXT="validate-commit-msg">
+<node CREATED="1509363275412" ID="ID_1316212992" MODIFIED="1509363373601" TEXT="package.json: config.githooks.&quot;commit-msg&quot;: &quot;validate-commit-msg&quot;&quot;"/>
+<node CREATED="1509363420449" ID="ID_1881426702" MODIFIED="1509363460151" TEXT="now if we tried to commit with a msg that doesn&apos;t follow the standard it will generate error and prevent from commiting"/>
+</node>
+</node>
+</node>
+<node CREATED="1509365851990" ID="ID_1348138866" MODIFIED="1509366672911" TEXT="good practices">
+<node CREATED="1509365856081" ID="ID_715091038" MODIFIED="1509365879653" TEXT="you want to release a new version for every commit because why not to"/>
+<node CREATED="1509365879786" ID="ID_50959958" MODIFIED="1509365917801" TEXT="you don&apos;t want to release breaking changes to often because people will struggle with catching up">
+<node CREATED="1509365917802" ID="ID_1045666959" MODIFIED="1509365942097" TEXT="Instead, create a brach called &apos;next&apos; or &apos;beta&apos; and all pull request would go to that"/>
+<node CREATED="1509365946627" ID="ID_1033015331" MODIFIED="1509365998257" TEXT="next once there is enough breaking changes, merge that branch with master as pull request"/>
+</node>
+<node CREATED="1509366789389" ID="ID_927424845" MODIFIED="1509366815046" TEXT="have a goal/definition of done - and roadmap">
+<node CREATED="1509366815047" ID="ID_1016267435" MODIFIED="1509366827003" TEXT="redux is done">
+<node CREATED="1509366827004" ID="ID_1721598983" MODIFIED="1509366843158" TEXT="if anyone needs a feature, they don&apos;t need to ask authour about it">
+<node CREATED="1509366843158" ID="ID_905366923" MODIFIED="1509367415977" TEXT="new features can be added as a middleware or plugins">
+<node CREATED="1509367417266" ID="ID_1902735866" MODIFIED="1509367503585" TEXT="Youtu.be/FlcB8T0miO8"/>
+</node>
+</node>
+<node CREATED="1509366944826" ID="ID_515372239" MODIFIED="1509366959368" TEXT="That way you can keep your library small and maintained much more easily and still cover the use cases that other people are looking for"/>
+</node>
 </node>
 </node>
 </node>
