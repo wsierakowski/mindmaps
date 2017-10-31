@@ -1,14 +1,29 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1508441258413" ID="ID_681257263" MODIFIED="1508877164711" TEXT="JS Project">
-<node CREATED="1508441364048" ID="ID_1789174684" MODIFIED="1508441383525" POSITION="right" TEXT="Text files">
-<node CREATED="1508441417319" ID="ID_548654128" MODIFIED="1508441422448" TEXT="License"/>
-<node CREATED="1508441423534" ID="ID_413675911" MODIFIED="1508441429124" TEXT="Code of conduct"/>
-<node CREATED="1508441430238" ID="ID_522541417" MODIFIED="1508441433571" TEXT="Readme"/>
-</node>
 <node CREATED="1508441469746" ID="ID_378442697" MODIFIED="1508441475862" POSITION="left" TEXT="NPM">
+<node CREATED="1509455500701" ID="ID_1602246088" MODIFIED="1509455543254" TEXT="Setting default settings">
+<node CREATED="1509455508732" ID="ID_1261843922" MODIFIED="1509455665094" TEXT="~/.npmrc">
+<node CREATED="1509455645311" ID="ID_839496025" MODIFIED="1509455660050" TEXT="init-authour-name=Kent C. Dodds"/>
+<node CREATED="1509455665475" ID="ID_1314143992" MODIFIED="1509455671859" TEXT="init-author-email"/>
+<node CREATED="1509455672090" ID="ID_1675220365" MODIFIED="1509455680073" TEXT="init-license"/>
+<node CREATED="1509456261294" ID="ID_1763608460" MODIFIED="1509456342105" TEXT="save-exact=true">
+<node CREATED="1509456265341" ID="ID_884139152" MODIFIED="1509456293722" TEXT="will not add carret to dependencies when --save - meaning the exact version will be stored"/>
+</node>
+</node>
+<node CREATED="1509455526204" ID="ID_1983544235" MODIFIED="1509455537656" TEXT="Settings that can be populated when doing npm init"/>
+<node CREATED="1509455817092" ID="ID_612677204" MODIFIED="1509455825127" TEXT="Can be also set this way">
+<node CREATED="1509455770638" ID="ID_115693059" MODIFIED="1509455855577" TEXT="npm config set init-author-name &quot;name&quot;"/>
+</node>
+</node>
+<node CREATED="1509455572163" ID="ID_1539718382" MODIFIED="1509455603152" TEXT="app configuration in package.json">
 <node CREATED="1508445656055" ID="ID_1372719283" MODIFIED="1508445834618" TEXT="NPM allows library users to configure dependecies (that support that) to put their settings to the config property. This means that the settings shouldn&apos;t be in the root of the package.json. This way if NPM decides to put a property with the same name as the name of the library, there won&apos;t be any conflict.">
 <node CREATED="1508445847471" ID="ID_996446834" MODIFIED="1508445896369" TEXT="&quot;config&quot;: {&#xa;   &quot;yourlib&quot;: {}&#xa;}"/>
+</node>
+</node>
+<node CREATED="1509456040181" ID="ID_1836594944" MODIFIED="1509456138581" TEXT="package.json main">
+<node CREATED="1509456044759" ID="ID_764375356" MODIFIED="1509456087612" TEXT="this is what is going to be provided when someone adds the library as a dependency and loads with require(&apos;your-lib-name&apos;)"/>
+<node CREATED="1509456138582" ID="ID_1663368462" MODIFIED="1509456151393" TEXT="main: &quot;src/index.js&quot;"/>
 </node>
 <node CREATED="1508668632432" ID="ID_233814540" MODIFIED="1508668695908" TEXT="package.json scripts.validate">
 <node CREATED="1508668643077" ID="ID_509633007" MODIFIED="1508668693439" TEXT="When somebody comes to help us maintain our project, we want them to be able to validate they are set up after running npm install"/>
@@ -63,10 +78,37 @@
 </node>
 </node>
 </node>
+<node CREATED="1509452586062" ID="ID_854846391" MODIFIED="1509454455547" POSITION="right" TEXT="Formal requirements">
+<node CREATED="1509452594156" ID="ID_228754411" MODIFIED="1509452600527" TEXT="License">
+<node CREATED="1509452611356" ID="ID_1603123203" MODIFIED="1509452650736" TEXT="check opensource.org/osd (open source definition)"/>
+<node CREATED="1509453555040" ID="ID_1971140471" MODIFIED="1509453558030" TEXT="LICENCE">
+<node CREATED="1509453558031" ID="ID_1902911825" MODIFIED="1509453561873" TEXT="no extension"/>
+</node>
+</node>
+<node CREATED="1509452601048" ID="ID_434128009" MODIFIED="1509452606768" TEXT="Code of conduct">
+<node CREATED="1509452785249" ID="ID_908530200" MODIFIED="1509452851844" TEXT="to make sure people behave appropriately or not making other uncomfortable"/>
+<node CREATED="1509454360159" ID="ID_1509758305" MODIFIED="1509454372720" TEXT="CODE_OF_CONDUCT.md"/>
+<node CREATED="1509454373318" ID="ID_327934740" MODIFIED="1509454387975" TEXT="source: contributor-covenant.org">
+<node CREATED="1509454504423" ID="ID_1598442055" MODIFIED="1509454540017" TEXT="insert your email in the enforcement section"/>
+</node>
+</node>
+<node CREATED="1509452607248" ID="ID_1642233640" MODIFIED="1509452610927" TEXT="Readme">
+<node CREATED="1509453562078" ID="ID_551864302" MODIFIED="1509453570017" TEXT="README.md"/>
+</node>
+</node>
 <node CREATED="1508441480456" ID="ID_1759992579" MODIFIED="1508441486801" POSITION="right" TEXT="ESLint">
 <node CREATED="1508787292442" ID="ID_1883122762" MODIFIED="1508787307528" TEXT="extends">
 <node CREATED="1508787307529" ID="ID_1983112806" MODIFIED="1508787313062" TEXT="best-practices"/>
 <node CREATED="1508787313532" ID="ID_768097822" MODIFIED="1508787325477" TEXT="possible-errors"/>
+</node>
+<node CREATED="1509463585484" ID="ID_1938630315" MODIFIED="1509463590544" TEXT="configure">
+<node CREATED="1509463590546" ID="ID_677956270" MODIFIED="1509463615290" TEXT="package.json scripts.lint: &quot;eslint .&quot;">
+<node CREATED="1509463631166" ID="ID_487502346" MODIFIED="1509463643609" TEXT="by default it will skip node_modules"/>
+</node>
+<node CREATED="1509463733534" ID="ID_1821336683" MODIFIED="1509463744915" TEXT="run $eslint --init">
+<node CREATED="1509463744916" ID="ID_174225969" MODIFIED="1509463780991" TEXT="it will run trhough the code and create a config based off of what it determines is your style "/>
+</node>
+<node CREATED="1509463918842" ID="ID_672467711" MODIFIED="1509463928883" TEXT="or configure .eslintrc"/>
 </node>
 </node>
 <node CREATED="1508441488887" ID="ID_575130199" MODIFIED="1508873000085" POSITION="left" TEXT="Tests">
@@ -408,7 +450,7 @@
 <node CREATED="1509362044085" ID="ID_463777502" MODIFIED="1509362062845" TEXT="Git commit messages">
 <node CREATED="1509273353722" ID="ID_290473227" MODIFIED="1509362067305" TEXT="Helps in automatically building changelog with git commit messages"/>
 <node CREATED="1509273390816" ID="ID_265934264" MODIFIED="1509277628038" TEXT="git message: &quot;fix(methodname): commit msg that will appear in changelog&quot;">
-<node CREATED="1509273589670" ID="ID_816813527" MODIFIED="1509362099952" TEXT="change_type(change_scope): change_subject">
+<node CREATED="1509273589670" ID="ID_816813527" MODIFIED="1509444338914" TEXT="&lt;change_type&gt;(&lt;change_scope&gt;): &lt;change_subject&gt;">
 <node CREATED="1509277326358" ID="ID_343015190" MODIFIED="1509277332618" TEXT="types">
 <node CREATED="1509277329129" ID="ID_1894731089" MODIFIED="1509277332340" TEXT="fix"/>
 <node CREATED="1509277332619" ID="ID_1011399829" MODIFIED="1509277334698" TEXT="feat"/>
