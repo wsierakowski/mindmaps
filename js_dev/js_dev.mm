@@ -97,10 +97,7 @@
 </node>
 </node>
 <node CREATED="1508441480456" ID="ID_1759992579" MODIFIED="1508441486801" POSITION="right" TEXT="ESLint">
-<node CREATED="1508787292442" ID="ID_1883122762" MODIFIED="1508787307528" TEXT="extends">
-<node CREATED="1508787307529" ID="ID_1983112806" MODIFIED="1508787313062" TEXT="best-practices"/>
-<node CREATED="1508787313532" ID="ID_768097822" MODIFIED="1508787325477" TEXT="possible-errors"/>
-</node>
+<node CREATED="1509538969380" ID="ID_974851872" MODIFIED="1509538999025" TEXT="best practice - install locally npm i eslint --save-dev"/>
 <node CREATED="1509463585484" ID="ID_1938630315" MODIFIED="1509463590544" TEXT="configure">
 <node CREATED="1509463590546" ID="ID_677956270" MODIFIED="1509463615290" TEXT="package.json scripts.lint: &quot;eslint .&quot;">
 <node CREATED="1509463631166" ID="ID_487502346" MODIFIED="1509463643609" TEXT="by default it will skip node_modules"/>
@@ -108,7 +105,76 @@
 <node CREATED="1509463733534" ID="ID_1821336683" MODIFIED="1509463744915" TEXT="run $eslint --init">
 <node CREATED="1509463744916" ID="ID_174225969" MODIFIED="1509463780991" TEXT="it will run trhough the code and create a config based off of what it determines is your style "/>
 </node>
-<node CREATED="1509463918842" ID="ID_672467711" MODIFIED="1509463928883" TEXT="or configure .eslintrc"/>
+<node CREATED="1509463918842" ID="ID_672467711" MODIFIED="1509538721845" TEXT="or manually configure .eslintrc">
+<node CREATED="1509535388025" ID="ID_365731461" MODIFIED="1509535392923" TEXT="env">
+<node CREATED="1509535392924" ID="ID_654038827" MODIFIED="1509535414827" TEXT="browser: true">
+<node CREATED="1509535414828" ID="ID_1769409017" MODIFIED="1509535456665" TEXT="will not complain about seeing xhr or window etc"/>
+</node>
+<node CREATED="1509535405068" ID="ID_1295672647" MODIFIED="1509535411222" TEXT="node: true">
+<node CREATED="1509535441645" ID="ID_1750432827" MODIFIED="1509535451352" TEXT="will not complain about require etc"/>
+</node>
+<node CREATED="1509538288038" ID="ID_230851465" MODIFIED="1509538294092" TEXT="es6: true"/>
+</node>
+<node CREATED="1509535457516" ID="ID_1018470579" MODIFIED="1509535462094" TEXT="extends">
+<node CREATED="1508787292442" ID="ID_1883122762" MODIFIED="1509538957088" TEXT="extends">
+<node CREATED="1508787307529" ID="ID_1983112806" MODIFIED="1508787313062" TEXT="best-practices"/>
+<node CREATED="1508787313532" ID="ID_768097822" MODIFIED="1508787325477" TEXT="possible-errors"/>
+</node>
+<node CREATED="1509538746648" ID="ID_1338031507" MODIFIED="1509538795312" TEXT="extend/inherit rules, then whatever is specified in rules will override it"/>
+<node CREATED="1509535606894" ID="ID_404135740" MODIFIED="1509535627433" TEXT="array of npm modules">
+<node CREATED="1509535914709" ID="ID_1926505725" MODIFIED="1509535932721" TEXT="they are actually in node_modules like an other npm dependencies"/>
+<node CREATED="1509538839976" ID="ID_553449271" MODIFIED="1509538855759" TEXT="or built in: &quot;eslint:recommended&quot;"/>
+</node>
+<node CREATED="1509535627434" ID="ID_1469785459" MODIFIED="1509535644388" TEXT="for example eslint-config-kentcdodds/best-practices">
+<node CREATED="1509535653140" ID="ID_841845005" MODIFIED="1509535840286" TEXT="can be saved as kentcdodds/best-practices">
+<node CREATED="1509535675956" ID="ID_640984902" MODIFIED="1509535683279" TEXT="eslint-config can be dropped"/>
+<node CREATED="1509535840287" ID="ID_905295510" MODIFIED="1509535848374" TEXT="or &quot;./other/linter.js&quot;"/>
+<node CREATED="1509535864483" ID="ID_1483638936" MODIFIED="1509535873961" TEXT="resolved like a normal node module"/>
+</node>
+<node CREATED="1509535671603" ID="ID_501859517" MODIFIED="1509535707997" TEXT="eslint-config-ketcdodds is an npm repo and best-practice is a js file with the rules"/>
+<node CREATED="1509535729518" ID="ID_745678621" MODIFIED="1509535757857" TEXT="rules file is like eslintrc, it has env and rules definitions"/>
+</node>
+<node CREATED="1509536888452" ID="ID_1663681447" MODIFIED="1509536904325" TEXT="search of eslint-config on npm ">
+<node CREATED="1509537128318" ID="ID_1087308874" MODIFIED="1509537130393" TEXT="https://github.com/kentcdodds/eslint-config-kentcdodds/"/>
+</node>
+</node>
+<node CREATED="1509535462561" ID="ID_560639610" MODIFIED="1509536671415" TEXT="rules">
+<node CREATED="1509536672769" ID="ID_1730407120" MODIFIED="1509536727657" TEXT="rulename: [reporting_type, rule option]">
+<node CREATED="1509536727658" ID="ID_729282102" MODIFIED="1509536734950" TEXT="reporting type">
+<node CREATED="1509536734950" ID="ID_1448785331" MODIFIED="1509538637635" TEXT="0 - off"/>
+<node CREATED="1509536739658" ID="ID_1522342199" MODIFIED="1509536743711" TEXT="1 - warning">
+<node CREATED="1509539812412" ID="ID_1545881620" MODIFIED="1509539844445" TEXT="will not affect the exit code of ESLint"/>
+</node>
+<node CREATED="1509536743865" ID="ID_1434674931" MODIFIED="1509536754793" TEXT="2 - error"/>
+</node>
+</node>
+<node CREATED="1509536625883" ID="ID_590781162" MODIFIED="1509536809757" TEXT="&quot;quotes&quot;: [2, &quot;single&quot;]">
+<node CREATED="1509536767170" ID="ID_452440345" MODIFIED="1509536791998" TEXT="report error if quotes aren&apos;t single, if double quite is found"/>
+</node>
+<node CREATED="1509536813055" ID="ID_385802780" MODIFIED="1509536822161" TEXT="&quot;eqeqeq&quot;: 0">
+<node CREATED="1509536822162" ID="ID_1390006010" MODIFIED="1509536843693" TEXT="ignore if there are lines without strong comparison ==="/>
+</node>
+<node CREATED="1509538362738" ID="ID_1122308699" MODIFIED="1509538398099" TEXT="&quot;indent&quot;: [&quot;error&quot;, 4]"/>
+</node>
+<node CREATED="1509536565904" ID="ID_1431283238" MODIFIED="1509536568082" TEXT="globals">
+<node CREATED="1509536568083" ID="ID_266409898" MODIFIED="1509536590923" TEXT="&quot;angular&quot;: 1">
+<node CREATED="1509536574768" ID="ID_205142292" MODIFIED="1509536590690" TEXT="will not complain about undefined variable "/>
+<node CREATED="1509536590924" ID="ID_1376407097" MODIFIED="1509536616176" TEXT="in this case will assume that angular comes from an imported lib that puts something to the global namespace"/>
+</node>
+</node>
+<node CREATED="1509540235248" ID="ID_791434860" MODIFIED="1509540238427" TEXT="plugins">
+<node CREATED="1509540238428" ID="ID_1273846853" MODIFIED="1509540264142" TEXT="allow importing custom rules (definitions of the rules))"/>
+</node>
+</node>
+<node CREATED="1509535268591" ID="ID_439264287" MODIFIED="1509535273265" TEXT="atom.io">
+<node CREATED="1509535273267" ID="ID_834844740" MODIFIED="1509535277913" TEXT="linter"/>
+<node CREATED="1509535278137" ID="ID_1079363766" MODIFIED="1509535285489" TEXT="linter-eslint"/>
+</node>
+</node>
+<node CREATED="1509538413788" ID="ID_1478101492" MODIFIED="1509538415813" TEXT="run">
+<node CREATED="1509538415814" ID="ID_535469709" MODIFIED="1509538419318" TEXT="eslint .">
+<node CREATED="1509538538435" ID="ID_933691788" MODIFIED="1509538554217" TEXT="--fix attempts to automatically solve problems"/>
+</node>
 </node>
 </node>
 <node CREATED="1508441488887" ID="ID_575130199" MODIFIED="1508873000085" POSITION="left" TEXT="Tests">
@@ -232,6 +298,14 @@
 </node>
 <node CREATED="1508583213427" ID="ID_169569199" MODIFIED="1508583232828" TEXT="ghooks are now deprecated and husky is a replacement">
 <node CREATED="1508583232828" ID="ID_116073712" MODIFIED="1508583258595" TEXT="the difference is that the hooks are defined in scripts rather than config.ghooks"/>
+</node>
+</node>
+<node CREATED="1509539070518" ID="ID_1746957705" MODIFIED="1509539076274" TEXT="pre-commit">
+<node CREATED="1509539076275" ID="ID_1098193685" MODIFIED="1509539087866" TEXT="npm i pre-commit --save dev"/>
+<node CREATED="1509539088322" ID="ID_1682882661" MODIFIED="1509539094229" TEXT="package.json">
+<node CREATED="1509539094230" ID="ID_1784090555" MODIFIED="1509539157635" TEXT="at root: &quot;pre-commit&quot;: [&quot;lint&quot;]">
+<node CREATED="1509539112461" ID="ID_878963466" MODIFIED="1509539150186" TEXT="where eslint is a scripts.lint: &quot;eslint .&quot;"/>
+</node>
 </node>
 </node>
 </node>
