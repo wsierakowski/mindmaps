@@ -38,10 +38,6 @@
 </node>
 </node>
 </node>
-<node CREATED="1509442175850" ID="ID_1411776358" MODIFIED="1509442264865" POSITION="right" TEXT="Finding changes (before commit)">
-<node CREATED="1509442264867" ID="ID_599383549" MODIFIED="1509442268008" TEXT="git status"/>
-<node CREATED="1509442268385" ID="ID_1611743405" MODIFIED="1509442271025" TEXT="git diff"/>
-</node>
 <node CREATED="1509444643150" ID="ID_1290613744" MODIFIED="1509444647687" POSITION="left" TEXT="rebase">
 <node CREATED="1509444648682" ID="ID_845635505" MODIFIED="1509444665212" TEXT="Use when we want to merge changes from master to our local branch">
 <node CREATED="1509444665213" ID="ID_722049955" MODIFIED="1509444726664" TEXT="better than merge as it will keep git history a little nicer"/>
@@ -98,10 +94,92 @@
 <node CREATED="1509442484287" ID="ID_1714940859" MODIFIED="1509442494216" TEXT="--no-verify"/>
 </node>
 </node>
-<node CREATED="1509444556031" ID="ID_1738359421" MODIFIED="1509444558336" POSITION="right" TEXT="links">
+<node CREATED="1509655229562" ID="ID_1671328678" MODIFIED="1509655252282" POSITION="right" TEXT="git config">
+<node CREATED="1509655234113" ID="ID_573464012" MODIFIED="1509655237289" TEXT="--global">
+<node CREATED="1509655237290" ID="ID_868739139" MODIFIED="1509655247539" TEXT="can be global or local setting"/>
+</node>
+<node CREATED="1509655255467" ID="ID_364176991" MODIFIED="1509655262626" TEXT="user">
+<node CREATED="1509655262628" ID="ID_1371694495" MODIFIED="1509655264732" TEXT="name"/>
+<node CREATED="1509655265429" ID="ID_947596495" MODIFIED="1509655274229" TEXT="email"/>
+</node>
+</node>
+<node CREATED="1509655485599" ID="ID_1875537781" MODIFIED="1509655496294" POSITION="right" TEXT="ssh">
+<node CREATED="1509655519062" ID="ID_283443843" MODIFIED="1509655529022" TEXT="Generate key pair">
+<node CREATED="1509655529023" ID="ID_28911460" MODIFIED="1509655573254" TEXT="ssh-keygen -t rsa -b 4096 -C name@domain.tld">
+<node CREATED="1509655597830" ID="ID_544232414" MODIFIED="1509655611419" TEXT="will generate in ~/.ssh">
+<node CREATED="1509655611420" ID="ID_1309782918" MODIFIED="1509655615074" TEXT="id_rsa">
+<node CREATED="1509655615075" ID="ID_1548374520" MODIFIED="1509655621106" TEXT="private key"/>
+</node>
+<node CREATED="1509655628623" ID="ID_858930035" MODIFIED="1509655635587" TEXT="id_rsa.pub"/>
+</node>
+</node>
+</node>
+<node CREATED="1509655805865" ID="ID_730767298" MODIFIED="1509655815954" TEXT="Add ssh key to the ssh agent program">
+<node CREATED="1509656050712" ID="ID_1934364441" MODIFIED="1509656074527" TEXT="Start ssh-agent in the background">
+<node CREATED="1509656026613" ID="ID_1848227671" MODIFIED="1509656173885" TEXT="$ eval &quot;$(ssh-agent -s)&quot;"/>
+</node>
+<node CREATED="1509656085698" ID="ID_1373693963" MODIFIED="1509700379620" TEXT="Add private key to ssh-agent and store passphrase in the keychain">
+<node CREATED="1509656128764" ID="ID_1547149962" MODIFIED="1509659973563" TEXT="$ ssh-add ~/.ssh/id_rsa">
+<node CREATED="1509700060409" ID="ID_653392507" MODIFIED="1509700065985" TEXT="List existing keys">
+<node CREATED="1509700065987" ID="ID_1861442608" MODIFIED="1509700078337" TEXT="$ ssh-add -l">
+<node CREATED="1509700080519" ID="ID_1578594904" MODIFIED="1509700097406" TEXT="$ ssh-add -L to list full keys"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1509698014324" ID="ID_888416473" MODIFIED="1509698030188" TEXT="For multiple keys">
+<node CREATED="1509698291747" ID="ID_1314190402" MODIFIED="1509698311475" TEXT="in ~/.ssh/config file">
+<node CREATED="1509698311477" ID="ID_933844630" MODIFIED="1509699269701" TEXT="Host woj.github.com&#xa;  HostName github.com&#xa;  PreferredAuthentications publickey&#xa;  IdentityFile ~/.ssh/id_rsa_secondary&#xa;&#xa;Host bitbucket.org&#xa;  HostName bitbucket.org&#xa;  IdentityFile ~/.ssh/id_rsa">
+<node CREATED="1509698636029" ID="ID_981311914" MODIFIED="1509698639535" TEXT="By defining each account with a different Host value, you can specify which git URLs use which SSH key."/>
+</node>
+</node>
+</node>
+<node CREATED="1509700760028" ID="ID_1060160059" MODIFIED="1509700763660" TEXT="Testing">
+<node CREATED="1509700763662" ID="ID_1179619378" MODIFIED="1509700783453" TEXT="$ ssh -T git@github.com"/>
+</node>
+</node>
+<node CREATED="1509656189504" ID="ID_207489059" MODIFIED="1509656205870" TEXT="Add public ssh key to GH/Bitbucket account"/>
+<node CREATED="1509656953167" ID="ID_541991359" MODIFIED="1509656971968" TEXT="origin remote">
+<node CREATED="1509656971972" ID="ID_1801635720" MODIFIED="1509656991798" TEXT="https://github.com/&lt;username&gt;/&lt;project&gt;.git"/>
+<node CREATED="1509656992554" ID="ID_430640052" MODIFIED="1509657019039" TEXT="git@github.com:&lt;username&gt;/&lt;project&gt;.git">
+<node CREATED="1509698997541" ID="ID_1104209323" MODIFIED="1509699143925" TEXT="In case of multiple keys and Host woj.github.com in the ssh config">
+<node CREATED="1509699143928" ID="ID_746878609" MODIFIED="1509699169924" TEXT="git@woj.github.com:&lt;username&gt;/&lt;project&gt;.git"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1509655347078" ID="ID_1742294745" MODIFIED="1509655356929" POSITION="right" TEXT=".gitignore">
+<node CREATED="1509655357814" ID="ID_1243722907" MODIFIED="1509655390617" TEXT="if placed in my home directory - it will become global for all projects in my home dir"/>
+</node>
+<node CREATED="1509654721899" ID="ID_1567668216" MODIFIED="1509654727835" POSITION="right" TEXT="GitHub">
+<node CREATED="1509654777224" ID="ID_967011058" MODIFIED="1509654793358" TEXT="View starred repositories">
+<node CREATED="1509654793361" ID="ID_1314587924" MODIFIED="1509654800093" TEXT="github.com/stars"/>
+</node>
+</node>
+<node CREATED="1509444556031" ID="ID_1738359421" MODIFIED="1509655508281" POSITION="right" TEXT="links">
 <node CREATED="1509444558337" ID="ID_1985484785" MODIFIED="1509444571592" TEXT="contributing to open source on gh">
 <node CREATED="1509444571593" ID="ID_1528360823" MODIFIED="1509444574370" TEXT="https://egghead.io/lessons/javascript-how-to-update-a-pull-request-on-github">
 <node CREATED="1509449748857" ID="ID_1099526054" MODIFIED="1509449750556" TEXT="https://github.com/eggheadio-github/stack-overflow-copy-paste"/>
+</node>
+</node>
+</node>
+<node CREATED="1509571117836" ID="ID_1561644400" MODIFIED="1509571160662" POSITION="left" TEXT="staging">
+<node CREATED="1509571160663" ID="ID_1836811653" MODIFIED="1509571169253" TEXT="git add &lt;file&gt;"/>
+<node CREATED="1509571169780" ID="ID_477952573" MODIFIED="1509571175928" TEXT="git reset &lt;file&gt;">
+<node CREATED="1509571175929" ID="ID_1014510879" MODIFIED="1509571182519" TEXT="undo add"/>
+</node>
+</node>
+<node CREATED="1509442175850" ID="ID_1411776358" MODIFIED="1509442264865" POSITION="left" TEXT="Finding changes (before commit)">
+<node CREATED="1509442264867" ID="ID_599383549" MODIFIED="1509442268008" TEXT="git status"/>
+<node CREATED="1509442268385" ID="ID_1611743405" MODIFIED="1509442271025" TEXT="git diff"/>
+</node>
+<node CREATED="1509657039958" ID="ID_1150872850" MODIFIED="1509657053861" POSITION="right" TEXT="remote">
+<node CREATED="1509657043038" ID="ID_1967198164" MODIFIED="1509657062911" TEXT="listing remotes">
+<node CREATED="1509703865804" ID="ID_565637574" MODIFIED="1509703872061" TEXT="git remote -v"/>
+</node>
+<node CREATED="1509657053862" ID="ID_1628886888" MODIFIED="1509657070008" TEXT="adding remote">
+<node CREATED="1509657070008" ID="ID_1160559531" MODIFIED="1509657103514" TEXT="git remote set-url origin git@github.com:&lt;username&gt;/&lt;project&gt;.git">
+<node CREATED="1509703979871" ID="ID_683235389" MODIFIED="1509703987869" TEXT="where &apos;origin&apos; is the remote name"/>
 </node>
 </node>
 </node>
