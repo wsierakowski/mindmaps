@@ -2,6 +2,9 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1509440345885" ID="ID_1307117310" MODIFIED="1509440446266" TEXT="git">
 <node CREATED="1509440450634" ID="ID_988995685" MODIFIED="1509440494013" POSITION="right" TEXT="Gihub contributions">
+<node CREATED="1509705525783" ID="ID_430625260" MODIFIED="1509705541305" TEXT="Check contribution file (or section in readme)">
+<node CREATED="1509705798908" ID="ID_337203295" MODIFIED="1509705833837" TEXT="Discuss the proposed fix with the maintainer before - so that the work will not be waste"/>
+</node>
 <node CREATED="1509440494014" ID="ID_815202604" MODIFIED="1509440623708" TEXT="After forking and cloning">
 <node CREATED="1509440623709" ID="ID_321497151" MODIFIED="1509440779863" TEXT="To keep track of the original master">
 <node CREATED="1509440684269" ID="ID_1253461869" MODIFIED="1509440737497" TEXT="git remote add upstream git@github.com:eggheadio-github/stack-overflow-copy-paste.git"/>
@@ -11,9 +14,13 @@
 <node CREATED="1509440918821" ID="ID_1487325273" MODIFIED="1509440941667" TEXT="Right now our local copy of the master branch is pointing to our personal remote repository"/>
 </node>
 <node CREATED="1509441007282" ID="ID_269206606" MODIFIED="1509441023611" TEXT="git branch --set-upstream-to=upstream/master master">
-<node CREATED="1509440971428" ID="ID_216863553" MODIFIED="1509441035628" TEXT="Our repository is called origin, we want our local copy of master to point upstream, so whenever we pull changes into master it will get the latest changes from the upstream repository."/>
+<node CREATED="1509440971428" ID="ID_216863553" MODIFIED="1509707447548" TEXT="Our repository is called origin, we want our local copy of master to point to upstream rather than origin, so whenever we pull changes into master it will get the latest changes from the upstream repository."/>
 <node CREATED="1509441076199" ID="ID_1140986031" MODIFIED="1509441078057" TEXT="Now our branch, called master, is tracking the upstream master. When there are updates we like to get from the upstream repository we can get them by simply pulling on that branch."/>
+<node CREATED="1509707607993" ID="ID_1522642272" MODIFIED="1509707614420" TEXT="Output: Branch master set up to track remote branch master from upstream."/>
 </node>
+</node>
+<node CREATED="1509791208638" ID="ID_180523807" MODIFIED="1509791221371" TEXT="Create a branch locally">
+<node CREATED="1509791292277" ID="ID_1824669980" MODIFIED="1509791346362" TEXT="git checkout -b &apos;pr/branch-name&apos;"/>
 </node>
 <node CREATED="1509442542138" ID="ID_939896522" MODIFIED="1509442552682" TEXT="Pushing local changes to do PR">
 <node CREATED="1509442552684" ID="ID_1312389552" MODIFIED="1509442562322" TEXT="git push origin pr/padLeft">
@@ -50,8 +57,9 @@
 <node CREATED="1509445362330" ID="ID_458130080" MODIFIED="1509445366866" TEXT="2. rebase">
 <node CREATED="1509445366867" ID="ID_1226739306" MODIFIED="1509445376687" TEXT="git rebase upstream/master"/>
 </node>
-<node CREATED="1509445609413" ID="ID_701388938" MODIFIED="1509445616571" TEXT="3. in case of conflicts">
+<node CREATED="1509445609413" ID="ID_701388938" MODIFIED="1510485027335" TEXT="3. in case of conflicts">
 <node CREATED="1509445616572" ID="ID_737029453" MODIFIED="1509445623699" TEXT="fix conflict"/>
+<node CREATED="1510485029069" ID="ID_594867625" MODIFIED="1510485039380" TEXT="check conflicts with git diff"/>
 </node>
 <node CREATED="1509445624598" ID="ID_1782201039" MODIFIED="1509446743281" TEXT="3.1 and then continue rebase">
 <node CREATED="1509445633241" ID="ID_1385094060" MODIFIED="1509445640607" TEXT="git rebase --continue"/>
@@ -104,7 +112,7 @@
 </node>
 </node>
 <node CREATED="1509655485599" ID="ID_1875537781" MODIFIED="1509655496294" POSITION="right" TEXT="ssh">
-<node CREATED="1509655519062" ID="ID_283443843" MODIFIED="1509655529022" TEXT="Generate key pair">
+<node CREATED="1509655519062" ID="ID_283443843" MODIFIED="1509706527832" TEXT="1. Generate key pair">
 <node CREATED="1509655529023" ID="ID_28911460" MODIFIED="1509655573254" TEXT="ssh-keygen -t rsa -b 4096 -C name@domain.tld">
 <node CREATED="1509655597830" ID="ID_544232414" MODIFIED="1509655611419" TEXT="will generate in ~/.ssh">
 <node CREATED="1509655611420" ID="ID_1309782918" MODIFIED="1509655615074" TEXT="id_rsa">
@@ -114,7 +122,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1509655805865" ID="ID_730767298" MODIFIED="1509655815954" TEXT="Add ssh key to the ssh agent program">
+<node CREATED="1509655805865" ID="ID_730767298" MODIFIED="1509706536060" TEXT="2. Add ssh key to the ssh agent program">
 <node CREATED="1509656050712" ID="ID_1934364441" MODIFIED="1509656074527" TEXT="Start ssh-agent in the background">
 <node CREATED="1509656026613" ID="ID_1848227671" MODIFIED="1509656173885" TEXT="$ eval &quot;$(ssh-agent -s)&quot;"/>
 </node>
@@ -129,7 +137,7 @@
 </node>
 <node CREATED="1509698014324" ID="ID_888416473" MODIFIED="1509698030188" TEXT="For multiple keys">
 <node CREATED="1509698291747" ID="ID_1314190402" MODIFIED="1509698311475" TEXT="in ~/.ssh/config file">
-<node CREATED="1509698311477" ID="ID_933844630" MODIFIED="1509699269701" TEXT="Host woj.github.com&#xa;  HostName github.com&#xa;  PreferredAuthentications publickey&#xa;  IdentityFile ~/.ssh/id_rsa_secondary&#xa;&#xa;Host bitbucket.org&#xa;  HostName bitbucket.org&#xa;  IdentityFile ~/.ssh/id_rsa">
+<node CREATED="1509698311477" ID="ID_933844630" MODIFIED="1509706490947" TEXT="Host hmh.github.com&#xa;  HostName github.com&#xa;  PreferredAuthentications publickey&#xa;  IdentityFile ~/.ssh/id_rsa_secondary&#xa;&#xa;Host bitbucket.org&#xa;  HostName bitbucket.org&#xa;  IdentityFile ~/.ssh/id_rsa">
 <node CREATED="1509698636029" ID="ID_981311914" MODIFIED="1509698639535" TEXT="By defining each account with a different Host value, you can specify which git URLs use which SSH key."/>
 </node>
 </node>
@@ -138,12 +146,12 @@
 <node CREATED="1509700763662" ID="ID_1179619378" MODIFIED="1509700783453" TEXT="$ ssh -T git@github.com"/>
 </node>
 </node>
-<node CREATED="1509656189504" ID="ID_207489059" MODIFIED="1509656205870" TEXT="Add public ssh key to GH/Bitbucket account"/>
-<node CREATED="1509656953167" ID="ID_541991359" MODIFIED="1509656971968" TEXT="origin remote">
-<node CREATED="1509656971972" ID="ID_1801635720" MODIFIED="1509656991798" TEXT="https://github.com/&lt;username&gt;/&lt;project&gt;.git"/>
-<node CREATED="1509656992554" ID="ID_430640052" MODIFIED="1509657019039" TEXT="git@github.com:&lt;username&gt;/&lt;project&gt;.git">
+<node CREATED="1509656189504" ID="ID_207489059" MODIFIED="1509706541840" TEXT="3. Add public ssh key to GH/Bitbucket account"/>
+<node CREATED="1509656953167" ID="ID_541991359" MODIFIED="1509706590633" TEXT="4. Set new origin remote url">
+<node CREATED="1509656971972" ID="ID_1801635720" MODIFIED="1509706604556" TEXT="From: https://github.com/&lt;username&gt;/&lt;project&gt;.git"/>
+<node CREATED="1509656992554" ID="ID_430640052" MODIFIED="1509706610251" TEXT="To: git@github.com:&lt;username&gt;/&lt;project&gt;.git">
 <node CREATED="1509698997541" ID="ID_1104209323" MODIFIED="1509699143925" TEXT="In case of multiple keys and Host woj.github.com in the ssh config">
-<node CREATED="1509699143928" ID="ID_746878609" MODIFIED="1509699169924" TEXT="git@woj.github.com:&lt;username&gt;/&lt;project&gt;.git"/>
+<node CREATED="1509699143928" ID="ID_746878609" MODIFIED="1509706623758" TEXT="git@hmh.github.com:&lt;username&gt;/&lt;project&gt;.git"/>
 </node>
 </node>
 </node>
@@ -175,12 +183,17 @@
 </node>
 <node CREATED="1509657039958" ID="ID_1150872850" MODIFIED="1509657053861" POSITION="right" TEXT="remote">
 <node CREATED="1509657043038" ID="ID_1967198164" MODIFIED="1509657062911" TEXT="listing remotes">
-<node CREATED="1509703865804" ID="ID_565637574" MODIFIED="1509703872061" TEXT="git remote -v"/>
+<node CREATED="1509703865804" ID="ID_565637574" MODIFIED="1509703872061" TEXT="git remote -v">
+<node CREATED="1509706978468" ID="ID_1208508019" MODIFIED="1509706988780" TEXT="origin  git@github.com:wsierakowski/stack-overflow-copy-paste.git (fetch)&#xa;origin  git@github.com:wsierakowski/stack-overflow-copy-paste.git (push)&#xa;upstream        git@github.com:eggheadio-github/stack-overflow-copy-paste.git (fetch)&#xa;upstream        git@github.com:eggheadio-github/stack-overflow-copy-paste.git (push)"/>
 </node>
-<node CREATED="1509657053862" ID="ID_1628886888" MODIFIED="1509657070008" TEXT="adding remote">
+</node>
+<node CREATED="1509657053862" ID="ID_1628886888" MODIFIED="1509706797551" TEXT="updating remote">
 <node CREATED="1509657070008" ID="ID_1160559531" MODIFIED="1509657103514" TEXT="git remote set-url origin git@github.com:&lt;username&gt;/&lt;project&gt;.git">
 <node CREATED="1509703979871" ID="ID_683235389" MODIFIED="1509703987869" TEXT="where &apos;origin&apos; is the remote name"/>
 </node>
+</node>
+<node CREATED="1509706800005" ID="ID_477057755" MODIFIED="1509706835708" TEXT="adding new remote (upstream in this case)">
+<node CREATED="1509706803263" ID="ID_1565982114" MODIFIED="1509706818400" TEXT="git remote add upstream git@github.com:eggheadio-github/stack-overflow-copy-paste.git"/>
 </node>
 </node>
 </node>
