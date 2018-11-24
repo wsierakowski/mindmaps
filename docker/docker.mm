@@ -326,6 +326,10 @@
 </node>
 </node>
 </node>
+<node CREATED="1516704175848" ID="ID_213525729" MODIFIED="1516704189046" TEXT="-f (--file)">
+<node CREATED="1516704196381" ID="ID_1631328076" MODIFIED="1516704199901" TEXT="Name of the Dockerfile (Default is &#x2018;PATH/Dockerfile&#x2019;)"/>
+<node CREATED="1516704218886" ID="ID_560553054" MODIFIED="1516704226721" TEXT="docker build . -f deploy/dynamo/Dockerfile -t docker.br.hmheng.io/com-hmhco-uds/dynamodb "/>
+</node>
 </node>
 <node CREATED="1506175270927" ID="ID_1200177924" MODIFIED="1506175282537" TEXT="--&gt; example &lt;--">
 <node CREATED="1506175286555" ID="ID_1614168257" MODIFIED="1506175299806" TEXT="docker build -t=&quot;jamtur01/static_web:v1&quot; ."/>
@@ -777,6 +781,7 @@
 <node CREATED="1506163923638" ID="ID_1130327588" MODIFIED="1506170265933" TEXT="--&gt; Example &lt;-- ">
 <node CREATED="1506163936725" ID="ID_755962711" MODIFIED="1506163956056" TEXT="docker exec -it 25d285662a5a bash"/>
 <node CREATED="1506170315892" ID="ID_1477171803" MODIFIED="1506170317356" TEXT="In this case our command will create a new bash session inside the container. We could then use this session to issue other commands inside our container."/>
+<node CREATED="1536577315736" ID="ID_910397958" MODIFIED="1536577319635" TEXT="$ docker exec -it influxdb /bin/bash"/>
 </node>
 </node>
 </node>
