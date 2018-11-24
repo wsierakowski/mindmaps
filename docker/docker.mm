@@ -590,6 +590,11 @@
 <node CREATED="1506250468557" ID="ID_928305754" MODIFIED="1506250498572" TEXT="Environment variable that will be applied at runtime (as opposed to ENV from Dockerfile applied and build time)"/>
 <node CREATED="1506250525364" ID="ID_55130774" MODIFIED="1506250526713" TEXT="docker run -ti -e &quot;WEB_PORT=8080&quot; ubuntu"/>
 </node>
+<node CREATED="1543064026278" ID="ID_1323766654" MODIFIED="1543064030842" TEXT="--rm">
+<node CREATED="1543064159887" ID="ID_1712171165" MODIFIED="1543064167712" TEXT="Automatically remove the container when it exits">
+<node CREATED="1543064167713" ID="ID_1238155591" MODIFIED="1543064188525" TEXT="By default a container&#x2019;s file system persists even after the container exits. This makes debugging a lot easier (since you can inspect the final state) and you retain all your data by default. But if you are running short-term foreground processes, these container file systems can really pile up."/>
+</node>
+</node>
 <node CREATED="1507841573336" ID="ID_1277081305" MODIFIED="1507841835503" TEXT="-v &lt;host_dir&gt;:&lt;cont_dir&gt;">
 <node CREATED="1507841581826" ID="ID_1479231441" MODIFIED="1507841609363" TEXT="Create a volume in our container from a directory on the host">
 <node CREATED="1507841781415" ID="ID_1683740846" MODIFIED="1507841784218" TEXT="Volumes are specially designated directories within one or more containers that bypass the layered Union File System to provide persistent or shared data for Docker. This means that changes to a volume are made directly and bypass the image. They will not be included when we commit or build an image."/>
